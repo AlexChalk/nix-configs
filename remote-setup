@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-git clone https://github.com/adc17/dotfiles
-# git clone https://github.com/adc17/nix-configs
-# ./build-symlinks(-nix)
-nix-env -iA nixos.adcPackages
-# build-env-command
