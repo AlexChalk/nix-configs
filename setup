@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# doctl compute droplet create <name> --region <region-slug> --image <image-slug> --size <size-slug>
+# doctl compute ssh root@<droplet-name>
+# doctl compute ssh-key import new_key_name --public-key-file ~/.ssh/id_rsa.pub
+# doctl compute droplet delete <id>
+# curl https://raw.githubusercontent.com/elitak/nixos-infect/master/nixos-infect | PROVIDER=digitalocean NIX_CHANNEL=nixos-19.03 bash 2>&1 | tee /tmp/infect.log
+
+
+# or just use nixops

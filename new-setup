@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+$HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot
+# $HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot  7.22s user 2.97s system 2% cpu 7:22.73 total
+# ip=$(doctl compute droplet list 'adcserver' --format 'PublicIPv4' | tail -n 1 | tr -d '')
+# nixops ssh helpers instead?
+# ssh -t root@$ip 'passwd adc'
+
+nixops ssh -d adc-server root@adcserver -t 'passwd adc'
+cat remote-setup | nixops ssh -d adc-server adc@adcserver -t
+# cat remote-setup | ssh adc@$ip
+echo "Machine setup complete"
