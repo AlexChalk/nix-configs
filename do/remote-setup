@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
+set -e
+
+cd $HOME
+
 git clone https://github.com/adc17/dotfiles
 git clone https://github.com/adc17/nix-configs
 
 mkdir workdir
-touch workdir/file.txt
 
-source $HOME/dotfiles/build-symlinks-nixops-server
+$HOME/nix-configs/do/build-symlinks-nixops-server
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \\n  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 nix-env -iA nixos.adcPackages
 
@@ -17,3 +22,5 @@ zpl update --all && zpl self-update
 
 rustup install stable
 rustup default stable
+
+nvim -c ':PlugInstall' -c ':q' -c ':q' $HOME/dotfiles/nvim/init.vim

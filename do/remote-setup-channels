@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+nix-channel --update
+nix-channel --list

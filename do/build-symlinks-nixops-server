@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+$HOME/dotfiles/build-symlinks
+
+cd $HOME
+mkdir .config/nixpkgs
+ln -s $HOME/nix-configs/do/user/config.nix .config/nixpkgs/config.nix

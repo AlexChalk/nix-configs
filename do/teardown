@@ -3,5 +3,7 @@
 set -e
 
 date_today=$(date +"%y-%m-%d_%H:%M:%S")
-nixops scp -d adc-server adc@adcserver:$HOME/workdir $HOME/workdir_$date_today -r
-# $HOME/nixops/result/bin/nixops destroy -d adc-server
+
+nixops scp -d adc-server --from adc@adcserver /home/adc/workdir $HOME/do-server-$date_today
+
+$HOME/nixops/result/bin/nixops destroy -d adc-server

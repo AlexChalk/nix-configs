@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+set -e
+
 $HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot
-# $HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot  7.22s user 2.97s system 2% cpu 7:22.73 total
-nixops ssh -d adc-server root@adcserver -t 'passwd adc'
+
+cat remote-setup-channels | nixops ssh -d adc-server adc@adcserver -t
 cat remote-setup | nixops ssh -d adc-server adc@adcserver -t
-# cat remote-setup | ssh adc@$ip
+
+nixops ssh -d adc-server root@adcserver -t 'passwd adc'
+
 echo "Machine setup complete"
