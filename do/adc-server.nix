@@ -18,7 +18,7 @@
     deployment.targetEnv = "digitalOcean";
     deployment.digitalOcean.enableIpv6 = true;
     deployment.digitalOcean.region = "tor1";
-    deployment.digitalOcean.size = "s-4vcpu-8gb";
+    deployment.digitalOcean.size = "c-8";
     # # "c-8" "c-16" "c-32" "s-4vcpu-8gb" maybe "8gb"
 
 

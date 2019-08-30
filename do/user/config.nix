@@ -3,7 +3,7 @@
     adcPackages = pkgs.buildEnv {
       name = "adc-packages";
       paths = [
-        binutils # maybe just in build env
+        # binutils # maybe just in build env
         clojure
         fd
         fzf
