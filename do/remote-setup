@@ -7,7 +7,12 @@ cd $HOME
 git clone https://github.com/adc17/dotfiles
 git clone https://github.com/adc17/nix-configs
 
+cd $HOME/dotfiles && git checkout adc/linux-proofing 
+cd $HOME
+
 mkdir workdir
+
+# guest ssh keys
 
 $HOME/nix-configs/do/build-symlinks-nixops-server
 
@@ -18,9 +23,11 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 nix-env -iA nixos.adcPackages
 
-zpl update --all && zpl self-update
-
 rustup install stable
 rustup default stable
+
+cd workdir
+git clone --recursive https://github.com/adc17/incubator-mxnet.git apache-mxnet
+cd ..
 
 nvim -c ':PlugInstall' -c ':q' -c ':q' $HOME/dotfiles/nvim/init.vim
