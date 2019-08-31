@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd $HOME/workdir
+
+git clone --recursive https://github.com/adc17/incubator-mxnet.git apache-mxnet
+
+cd apache-mxnet
+
+nix-shell $HOME/nix-configs/do/mxnet-shared-build.nix \
+  --command "make -j $(nproc) \
+      USE_OPENCV=1 \
+      USE_LAPACK=1 \
+      USE_GPERFTOOLS=1 \
+      USE_MKLDNN=1 \
+      USE_BLAS=openblas \
+      USE_LAPACK_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [liblapack]') \
+      USE_GPERFTOOLS_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [gperftools]')"

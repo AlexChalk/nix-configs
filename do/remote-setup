@@ -26,8 +26,4 @@ nix-env -iA nixos.adcPackages
 rustup install stable
 rustup default stable
 
-cd workdir
-git clone --recursive https://github.com/adc17/incubator-mxnet.git apache-mxnet
-cd ..
-
 nvim -c ':PlugInstall' -c ':q' -c ':q' $HOME/dotfiles/nvim/init.vim
