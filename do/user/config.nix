@@ -12,7 +12,6 @@
         htop
       	openjdk
         maven
-        pkg-config
         python2
         python3
         ripgrep
