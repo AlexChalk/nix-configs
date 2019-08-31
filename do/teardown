@@ -2,6 +2,11 @@
 
 set -e
 
+if [[ $1 == '--no-save' ]]; then
+  $HOME/nixops/result/bin/nixops destroy -d adc-server
+  exit
+fi
+
 date_today=$(date +"%y-%m-%d_%H:%M:%S")
 
 if [[ ! -d $HOME/do-server-workdirs ]]; then
