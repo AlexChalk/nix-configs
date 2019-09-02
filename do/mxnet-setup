@@ -8,6 +8,9 @@ git clone --recursive https://github.com/adc17/incubator-mxnet.git apache-mxnet
 
 cd apache-mxnet
 
+# git checkout tags/1.4.1 -b my_mxnet  # this is optional
+# git submodule update --init --recursive
+
 nix-shell $HOME/nix-configs/do/mxnet-shared-build.nix \
   --command "make -j $(nproc) \
       USE_OPENCV=1 \
@@ -17,3 +20,9 @@ nix-shell $HOME/nix-configs/do/mxnet-shared-build.nix \
       USE_BLAS=openblas \
       USE_LAPACK_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [liblapack]') \
       USE_GPERFTOOLS_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [gperftools]')"
+
+cd scala-package
+mvn install
+
+cd ../contrib/clojure-package
+lein deps

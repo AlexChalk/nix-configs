@@ -6,10 +6,13 @@ $HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot
 
 cat remote-setup-channels | nixops ssh -d adc-server adc@adcserver -t
 cat remote-setup | nixops ssh -d adc-server adc@adcserver -t
+
+nixops ssh -d adc-server root@adcserver -t 'sudo ln -s $(which bash) /bin/bash'
+
 cat mxnet-setup | nixops ssh -d adc-server adc@adcserver -t
 
 # Not finding zplugin
-nixops ssh -d adc-server adc@adcserver 'zplugin update --all && zplugin self-update' 
+# nixops ssh -d adc-server adc@adcserver 'zplugin update --all && zplugin self-update' 
 
 nixops ssh -d adc-server root@adcserver -t 'passwd adc'
 

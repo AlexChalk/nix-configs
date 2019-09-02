@@ -61,6 +61,12 @@ reasonable not let you interact with your account:
 export DIGITAL_OCEAN_AUTH_TOKEN='your-auth-token'
 ```
 
+For easy ssh, store your ssh key in a file in the `do` directory, and name it
+`adc-public-key.nix`. The file should look like this:
+```
+[ "your-public-key" ]
+```
+
 One last gotcha: you'll need to use the source code/unstable branch of nixops if you
 want your DO instance to be initialized with the nixos 19.03 channel as default. This
 is likely to change in an upcoming release.

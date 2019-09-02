@@ -4,8 +4,11 @@
   resources.sshKeyPairs.ssh-key = {};
 
   adcserver = { config, pkgs, ... }: { 
+    # imports = [ <nixpkgs/nixos/modules/profiles/minimal.nix> ];
+    environment.noXlibs = true;
+
     environment.systemPackages = with pkgs; [
-      git vim zsh
+      git man vim zsh
     ];
 
     services.openssh.enable = true;
@@ -18,7 +21,7 @@
     deployment.targetEnv = "digitalOcean";
     deployment.digitalOcean.enableIpv6 = true;
     deployment.digitalOcean.region = "tor1";
-    deployment.digitalOcean.size = "c-8";
+    deployment.digitalOcean.size = "c-4";
     # # "c-8" "c-16" "c-32" "s-4vcpu-8gb" maybe "8gb"
 
 
