@@ -4,25 +4,34 @@ set -e
 
 cd $HOME/workdir
 
-git clone --recursive https://github.com/adc17/incubator-mxnet.git apache-mxnet
+git clone --recursive https://github.com/apache/incubator-mxnet.git apache-mxnet
 
 cd apache-mxnet
 
-# git checkout tags/1.4.1 -b my_mxnet  # this is optional
+git remote remove origin
+git remote add upstream git@github.com:apache/incubator-mxnet.git
+git remote add origin git@github.com:adc17/incubator-mxnet.git
+
+# git checkout 1.5.0 -b my_mxnet
 # git submodule update --init --recursive
 
-nix-shell $HOME/nix-configs/do/mxnet-shared-build.nix \
-  --command "make -j $(nproc) \
-      USE_OPENCV=1 \
-      USE_LAPACK=1 \
-      USE_GPERFTOOLS=1 \
-      USE_MKLDNN=1 \
-      USE_BLAS=openblas \
-      USE_LAPACK_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [liblapack]') \
-      USE_GPERFTOOLS_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [gperftools]')"
+# nix-shell $HOME/nix-configs/do/mxnet-shared-build.nix \
+#   --command "make -j $(nproc) \
+#       USE_OPENCV=1 \
+#       USE_LAPACK=1 \
+#       USE_GPERFTOOLS=1 \
+#       USE_MKLDNN=1 \
+#       USE_BLAS=openblas \
+#       USE_LAPACK_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [liblapack]') \
+#       USE_GPERFTOOLS_PATH=$(nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.makeLibraryPath [gperftools]')"
+#
+# cd scala-package
+# mvn install
+# cd ..
 
-cd scala-package
-mvn install
+cd contrib/clojure-package
 
-cd ../contrib/clojure-package
+sed -i 's/\[org.apache.mxnet\/mxnet-full_2.11 "INTERNAL"\]/;\[org.apache.mxnet\/mxnet-full_2.11 "INTERNAL"\]/g' project.clj
+sed -i 's/;\[org.apache.mxnet\/mxnet-full_2.11-linux-x86_64-cpu "<insert-snapshot-version>"\]/\[org.apache.mxnet\/mxnet-full_2.11-linux-x86_64-cpu "1.6.0-SNAPSHOT"\]/g' project.clj
+
 lein deps

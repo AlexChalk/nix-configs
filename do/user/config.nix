@@ -3,11 +3,10 @@
     adcPackages = pkgs.buildEnv {
       name = "adc-packages";
       paths = [
-        # binutils # maybe just in build env
         clojure
         fd
         fzf
-        (hiPrio gcc) # prio needed due to binutils conflict
+        gcc
         git
         htop
       	openjdk
