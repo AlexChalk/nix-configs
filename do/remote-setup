@@ -7,9 +7,6 @@ cd $HOME
 git clone https://github.com/adc17/dotfiles
 git clone https://github.com/adc17/nix-configs
 
-cd $HOME/dotfiles && git checkout adc/linux-proofing 
-cd $HOME
-
 mkdir workdir
 
 # guest ssh keys

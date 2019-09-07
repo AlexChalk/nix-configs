@@ -4,7 +4,6 @@
   resources.sshKeyPairs.ssh-key = {};
 
   adcserver = { config, pkgs, ... }: { 
-    # imports = [ <nixpkgs/nixos/modules/profiles/minimal.nix> ];
     environment.noXlibs = true;
 
     environment.systemPackages = with pkgs; [
@@ -34,8 +33,4 @@
       openssh.authorizedKeys.keys = import ./adc-public-key.nix;
     };
   };
-  # next steps:
-  # - use latest channel (env var?) figure out why it's defaulting to 17.09
-  # - why is my version of nixops old (17.09 from april at least), how can i get latest
-  # - build adc env with adcPackages (run nix-env -i adcPackages for adc)
 }
