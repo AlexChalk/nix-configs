@@ -11,6 +11,7 @@
         htop
       	openjdk
         maven
+        nodejs
         python2
         python3
         ripgrep
@@ -22,6 +23,7 @@
         universal-ctags
         unzip
         wget
+        yarn
         leiningen
         (callPackage (import ./packages/neovim.nix) {})
       ];
