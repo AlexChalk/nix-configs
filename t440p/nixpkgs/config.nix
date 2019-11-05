@@ -26,6 +26,7 @@
         nodejs
         python2
         python3
+        redshift
         ripgrep
         ruby
         rustup
