@@ -100,7 +100,7 @@
   # Enable the sway windowing system.
   programs.sway.enable = true;
   programs.sway.extraPackages = with pkgs; [
-    swaylock swayidle swaybg waybar xwayland dmenu
+    libappindicator swaylock swayidle swaybg waybar xwayland dmenu
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
