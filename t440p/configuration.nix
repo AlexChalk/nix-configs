@@ -16,9 +16,11 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # boot.extraModprobeConfig = ''
+  #   thinkpad_acpi
+  # '';
 
   networking.hostName = "adc-nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Enables wireless support via networkmanager.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -43,16 +45,16 @@
   #   defaultLocale = "en_US.UTF-8";
   # };
 
+  # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt
   services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin";
   i18n.consoleUseXkbConfig = true;
 
   # Set your time zone.
   time.timeZone = "America/Montreal";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
-    git killall lshw man networkmanager pciutils vim wget wpa_supplicant zsh
+    git killall lshw lsof man pavucontrol pciutils vim wget zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -76,7 +78,7 @@
 
   # Enable sound.
   sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.mediaKeys.enable = true;
 
   # Other hardware
   hardware = {
@@ -85,13 +87,13 @@
     opengl.enable = true;
     pulseaudio.enable = true;
   };
-  # hardware.enableRedistributableFirmware = true;
+
   programs.light.enable = true;
   services.actkbd = {
     enable = true;
     bindings = [
-      { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 5"; }
-      { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 5"; }
+      { keys = [ 224 ]; events = [ "key" ]; command = "light -A 5"; }
+      { keys = [ 225 ]; events = [ "key" ]; command = "light -U 5"; }
     ];
   };
 
@@ -100,24 +102,13 @@
   programs.sway.extraPackages = with pkgs; [
     swaylock swayidle swaybg waybar xwayland dmenu
   ];
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = ["ctrl:nocaps" "altwin:swap_lalt_lwin"];
-  # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.adc = {
     isNormalUser = true;
     home = "/home/adc";
     shell = pkgs.zsh;
-    extraGroups = [ "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "audio" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release with which your system is to be
@@ -125,5 +116,4 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
-
 }

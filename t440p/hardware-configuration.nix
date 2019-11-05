@@ -11,11 +11,6 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
-  # boot.extraModprobeConfig = ''
-  #   options iwlwifi bt_coex_active=0 power_save=Y
-  #   options iwldvm force_cam=N
-  # '';
-
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
