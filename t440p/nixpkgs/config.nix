@@ -12,6 +12,7 @@
         fd
         fzf
         (hiPrio gcc)
+        haskellPackages.greenclip
         (import <nixos-unstable> {}).firefox-wayland
         grim
         slurp

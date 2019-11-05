@@ -43,6 +43,9 @@
   #   defaultLocale = "en_US.UTF-8";
   # };
 
+  services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin";
+  i18n.consoleUseXkbConfig = true;
+
   # Set your time zone.
   time.timeZone = "America/Montreal";
 
@@ -100,8 +103,8 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
+  # services.xserver.xkbOptions = ["ctrl:nocaps" "altwin:swap_lalt_lwin"];
+  # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
