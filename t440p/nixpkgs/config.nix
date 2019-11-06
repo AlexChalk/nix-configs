@@ -24,6 +24,7 @@
         kitty
       	openjdk
         maven
+        nix-index
         nodejs
         python2
         python3

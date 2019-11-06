@@ -19,3 +19,5 @@ ln -s $HOME/nix-configs/t440p/nixpkgs $HOME/.config
 mkdir -p $HOME/.config/nixpkgs/packages
 ln -s $HOME/nix-configs/t440p/user/config.nix $HOME/.config/nixpkgs/config.nix
 ln -s $HOME/nix-configs/t440p/user/packages/neovim.nix $HOME/.config/nixpkgs/packages/neovim.nix
+
+git clone git@github.com:adc17/triplicate-private.git $HOME/.local/share/fonts

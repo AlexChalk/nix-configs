@@ -39,11 +39,15 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+  i18n = {
+    consolePackages = [ pkgs.terminus_font ];
+    consoleFont = "ter-116n";
+    consoleColors = [ 
+      "282828" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "d5c4a1"
+      "665c54" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "fbf1c7"
+    ];
+    defaultLocale = "en_US.UTF-8";
+  };
 
   # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt
   services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin";
