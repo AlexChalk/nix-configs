@@ -64,6 +64,7 @@
 
   environment.variables = {
     MY_MACHINE = "nixos";
+    XDG_CURRENT_DESKTOP = "Unity";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
