@@ -22,7 +22,8 @@
   # '';
 
   networking.hostName = "adc-nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Enables wireless support via networkmanager.
+  networking.networkmanager.enable = true; # Enables wireless support via networkmanager.
+  # networking.wireless.enable = false; # Disables conflicting wireless support.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -97,6 +98,7 @@
     opengl.enable = true;
     pulseaudio.enable = true;
   };
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   programs.light.enable = true;
   services.actkbd = {
@@ -113,12 +115,15 @@
     libappindicator swaylock swayidle swaybg waybar xwayland dmenu
   ];
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.adc = {
     isNormalUser = true;
     home = "/home/adc";
     shell = pkgs.zsh;
-    extraGroups = [ "audio" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "docker" "networkmanager" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release with which your system is to be
