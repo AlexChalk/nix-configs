@@ -43,7 +43,7 @@
   # Select internationalisation properties.
   i18n = {
     consolePackages = [ pkgs.terminus_font ];
-    consoleFont = "ter-116n";
+    consoleFont = "ter-v22n";
     consoleColors = [ 
       "282828" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "d5c4a1"
       "665c54" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "fbf1c7"
