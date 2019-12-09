@@ -45,11 +45,11 @@
         tree
         universal-ctags
         unzip
-        weston
         wget
         wire-desktop
         yarn
         leiningen
+        gnome3.adwaita-icon-theme
         (callPackage (import ./packages/neovim.nix) {})
       ];
     };

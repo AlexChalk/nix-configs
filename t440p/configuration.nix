@@ -2,8 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  unstable = import <nixos-unstable> {};
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -23,7 +26,7 @@
 
   networking.hostName = "adc-nixos"; # Define your hostname.
   networking.networkmanager.enable = true; # Enables wireless support via networkmanager.
-  # networking.wireless.enable = false; # Disables conflicting wireless support.
+  # networking.wireless.enable = false;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -43,13 +46,20 @@
   # Select internationalisation properties.
   i18n = {
     consolePackages = [ pkgs.terminus_font ];
-    consoleFont = "ter-v22n";
+    consoleFont = "ter-122n";
     consoleColors = [ 
       "282828" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "d5c4a1"
       "665c54" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "fbf1c7"
     ];
     defaultLocale = "en_US.UTF-8";
   };
+
+  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome3.extraGSettingsOverrides = ''
+    [org.gnome.desktop.interface]
+    cursor-theme='Adwaita'
+    cursor-size=24
+  '';
 
   # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt
   services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin";
@@ -61,11 +71,27 @@
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
     git killall lshw lsof man pavucontrol pciutils vim wget zsh
+    (
+      pkgs.writeTextFile {
+        name = "startsway";
+        destination = "/bin/startsway";
+        executable = true;
+        text = ''
+          #! ${pkgs.bash}/bin/bash
+
+          # first import environment variables from the login manager
+          systemctl --user import-environment
+          # then start the service
+          exec systemctl --user start sway.service
+          '';
+      }
+    )
   ];
 
   environment.variables = {
     MY_MACHINE = "nixos";
     XDG_CURRENT_DESKTOP = "Unity";
+    XCURSOR_SIZE = "32";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -110,10 +136,72 @@
   };
 
   # Enable the sway windowing system.
-  programs.sway.enable = true;
-  programs.sway.extraPackages = with pkgs; [
-    libappindicator swaylock swayidle swaybg waybar xwayland dmenu
-  ];
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+      swaybg
+      swaylock # lockscreen
+      swayidle
+      xwayland # for legacy apps
+      waybar # status bar
+      dmenu
+      mako # notification daemon
+      kanshi # autorandr
+    ];
+  };
+
+  systemd.user.targets.sway-session = {
+    description = "Sway compositor session";
+    documentation = [ "man:systemd.special(7)" ];
+    bindsTo = [ "graphical-session.target" ];
+    wants = [ "graphical-session-pre.target" ];
+    after = [ "graphical-session-pre.target" ];
+  };
+
+  systemd.user.services.sway = {
+    description = "Sway - Wayland window manager";
+    documentation = [ "man:sway(5)" ];
+    bindsTo = [ "graphical-session.target" ];
+    wants = [ "graphical-session-pre.target" ];
+    after = [ "graphical-session-pre.target" ];
+    # We explicitly unset PATH here, as we want it to be set by
+    # systemctl --user import-environment in startsway
+    environment.PATH = lib.mkForce null;
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''
+        ${pkgs.dbus}/bin/dbus-run-session ${pkgs.sway}/bin/sway --debug
+      '';
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
+  services.geoclue2.enable= true;
+  location.provider = "geoclue2";
+
+  services.redshift = {
+    enable = true;
+    package = unstable.redshift-wlr;
+    temperature.day = 5000;
+    temperature.night = 1900;
+  };
+
+  # programs.waybar.enable = true;
+
+  systemd.user.services.kanshi = {
+    description = "Kanshi output autoconfig ";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = ''
+        ${pkgs.kanshi}/bin/kanshi
+      '';
+      RestartSec = 5;
+      Restart = "always";
+    };
+  };
 
   virtualisation.docker.enable = true;
   virtualisation.docker.autoPrune.enable = true;
