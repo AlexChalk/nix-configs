@@ -5,6 +5,7 @@
 { config, lib, pkgs, ... }:
 
 let
+  mkForce = lib.mkForce;
   unstable = import <nixos-unstable> {};
 in
 {
@@ -54,6 +55,15 @@ in
     defaultLocale = "en_US.UTF-8";
   };
 
+
+  services.gnome3 = {
+    gnome-keyring.enable = mkForce false;
+    core-os-services.enable = mkForce false;
+    core-utilities.enable = mkForce false;
+    games.enable = mkForce false;
+    core-shell.enable = true;
+  };
+  # services.xserver.desktopManager.default = "none";
   services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.desktopManager.gnome3.extraGSettingsOverrides = ''
     [org.gnome.desktop.interface]
