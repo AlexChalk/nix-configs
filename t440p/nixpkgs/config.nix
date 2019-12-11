@@ -12,10 +12,9 @@
         evince
         fd
         fzf
-        (hiPrio gcc)
         gitAndTools.hub
         haskellPackages.greenclip
-        (import <nixos-unstable> {}).firefox-wayland
+        gnome3.adwaita-icon-theme
         grim
         slurp
         wf-recorder
@@ -25,9 +24,11 @@
         htop
         jq
         kitty
+        leiningen
       	openjdk
         maven
         neofetch
+        nixops
         nix-index
         nodejs
         python2
@@ -46,10 +47,10 @@
         universal-ctags
         unzip
         wget
-        wire-desktop
+        wine
         yarn
-        leiningen
-        gnome3.adwaita-icon-theme
+        (hiPrio gcc)
+        (import <nixos-unstable> {}).firefox-wayland
         (callPackage (import ./packages/neovim.nix) {})
       ];
     };

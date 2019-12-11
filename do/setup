@@ -2,7 +2,8 @@
 
 set -e
 
-$HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot
+# $HOME/nixops/result/bin/nixops deploy -d adc-server --allow-reboot
+nixops deploy -d adc-server --allow-reboot
 
 cat remote-setup-channels | nixops ssh -d adc-server adc@adcserver -t
 cat remote-setup | nixops ssh -d adc-server adc@adcserver -t
