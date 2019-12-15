@@ -154,7 +154,8 @@ in
       swayidle
       xwayland # for legacy apps
       waybar # status bar
-      dmenu
+      bemenu
+      j4-dmenu-desktop
       mako # notification daemon
       kanshi # autorandr
     ];
