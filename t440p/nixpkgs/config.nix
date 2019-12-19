@@ -6,6 +6,7 @@
       paths = [
         _1password
         acpi
+        brave
         binutils
         clojure
         dropbox-cli
@@ -46,8 +47,10 @@
         tree
         universal-ctags
         unzip
+        viewnior
         wget
         wine
+        xdg_utils
         yarn
         (hiPrio gcc)
         (import <nixos-unstable> {}).firefox-wayland
