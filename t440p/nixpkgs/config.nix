@@ -36,7 +36,6 @@
         python3
         python2Packages.pynvim
         python3Packages.pynvim
-        redshift
         ripgrep
         ruby
         rustup

@@ -18,6 +18,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.pulseaudio = true;
 
+  boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -80,7 +81,7 @@ in
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
-    git killall lshw lsof man pavucontrol pciutils vim wget zsh
+    git killall lshw lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
     (
       pkgs.writeTextFile {
         name = "startsway";
@@ -121,7 +122,12 @@ in
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
+  services.printing.drivers = with pkgs; [
+    cnijfilter2 cups-bjnp gutenprint
+  ];
+  # services.avahi.enable = true;
+  # services.avahi.nssmdns = true;
 
   # Enable sound.
   sound.enable = true;
@@ -217,12 +223,20 @@ in
   virtualisation.docker.enable = true;
   virtualisation.docker.autoPrune.enable = true;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemuOvmf = true;
+    qemuRunAsRoot = false;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.adc = {
     isNormalUser = true;
     home = "/home/adc";
     shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "docker" "libvirtd" "networkmanager" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release with which your system is to be
