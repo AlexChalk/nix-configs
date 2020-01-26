@@ -29,6 +29,11 @@ in
   networking.hostName = "adc-nixos"; # Define your hostname.
   networking.networkmanager.enable = true; # Enables wireless support via networkmanager.
   # networking.wireless.enable = false;
+  # networking.extraHosts =
+  # ''
+  #   192.168.0.18 printer
+  #   2a9add000000.local
+  # '';
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -80,6 +85,7 @@ in
   time.timeZone = "America/Montreal";
 
   # List packages installed in system profile. To search, run: $ nix search wget
+  # nssmdns 
   environment.systemPackages = with pkgs; [
     git killall lshw lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
     (
@@ -126,8 +132,8 @@ in
   services.printing.drivers = with pkgs; [
     canon-cups-ufr2 cnijfilter2 cups-bjnp gutenprint
   ];
-  # services.avahi.enable = true;
-  # services.avahi.nssmdns = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 
   # Enable sound.
   sound.enable = true;
