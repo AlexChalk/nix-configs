@@ -24,6 +24,7 @@
         wl-clipboard
         gnome3.gnome-maps
         gnome3.gnome-control-center
+        gnome3.simple-scan
         git
         htop
         jq

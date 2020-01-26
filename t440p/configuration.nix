@@ -147,6 +147,9 @@ in
     pulseaudio.enable = true;
   };
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  # hardware.sane.enable = true;
+  # hardware.sane.netConf = "192.168.0.18";
+  # services.saned.enable = true;
 
   programs.light.enable = true;
   services.actkbd = {
@@ -242,7 +245,7 @@ in
     isNormalUser = true;
     home = "/home/adc";
     shell = pkgs.zsh;
-    extraGroups = [ "docker" "libvirtd" "networkmanager" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "docker" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release with which your system is to be
