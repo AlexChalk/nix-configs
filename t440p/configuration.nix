@@ -124,7 +124,7 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [
-    cnijfilter2 cups-bjnp gutenprint
+    canon-cups-ufr2 cnijfilter2 cups-bjnp gutenprint
   ];
   # services.avahi.enable = true;
   # services.avahi.nssmdns = true;

@@ -12,15 +12,18 @@
         dropbox-cli
         evince
         fd
+        firefox-wayland
         fzf
         gitAndTools.hub
         haskellPackages.greenclip
         gnome3.adwaita-icon-theme
+        gnome3.gnome-keyring
         grim
         slurp
         wf-recorder
         wl-clipboard
         gnome3.gnome-maps
+        gnome3.gnome-control-center
         git
         htop
         jq
@@ -39,8 +42,8 @@
         ripgrep
         ruby
         rustup
-        skypeforlinux
         stack
+        subversion
         terraform
         tmux
         tree
@@ -49,10 +52,12 @@
         viewnior
         wget
         wine
+        winetricks
         xdg_utils
         yarn
+        zathura
         (hiPrio gcc)
-        (import <nixos-unstable> {}).firefox-wayland
+        (import <nixos-unstable> {}).skypeforlinux
         (callPackage (import ./packages/neovim.nix) {})
       ];
     };
