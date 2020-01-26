@@ -13,6 +13,7 @@ in
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t440p>
       ./hardware-configuration.nix
+      ./sane-extra-config.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -147,9 +148,13 @@ in
     pulseaudio.enable = true;
   };
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
-  # hardware.sane.enable = true;
+  hardware.sane.enable = true;
   # hardware.sane.netConf = "192.168.0.18";
-  # services.saned.enable = true;
+  services.saned.enable = true;
+  hardware.sane.extraConfig.pixma = ''
+    bjnp-timeout=5000
+    bjnp://192.168.0.18
+  '';
 
   programs.light.enable = true;
   services.actkbd = {

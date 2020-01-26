@@ -10,6 +10,7 @@ sudo ln -s $HOME/nix-configs/t440p/configuration.nix /etc/nixos/configuration.ni
 mv $HOME/nix-configs/t440p/hardware-configuration.nix $HOME/nix-configs/t440p/hardware-configuration.nix.old
 sudo mv /etc/nixos/hardware-configuration.nix $HOME/nix-configs/t440p/hardware-configuration.nix
 sudo ln -s $HOME/nix-configs/t440p/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+sudo ln -s $HOME/nix-configs/t440p/sane-extra-config.nix /etc/nixos/sane-extra-config.nix
 
 git clone git@github.com:b0o/swaynagmode.git
 mkdir bin-personal &> /dev/null
