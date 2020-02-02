@@ -6,6 +6,7 @@
       paths = [
         _1password
         acpi
+        asciidoctor
         brave
         binutils
         clojure
@@ -36,6 +37,7 @@
         nixops
         nix-index
         nodejs
+        pandoc
         python2
         python3
         python2Packages.pynvim
@@ -46,6 +48,7 @@
         stack
         subversion
         terraform
+        texlive.combined.scheme-medium
         tmux
         tree
         universal-ctags
