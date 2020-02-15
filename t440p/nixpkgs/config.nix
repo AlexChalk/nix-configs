@@ -10,13 +10,17 @@
         brave
         binutils
         clojure
+        (import <nixos-unstable> {}).clojure-lsp
         dropbox-cli
         evince
         fd
         firefox-wayland
         fzf
         gitAndTools.hub
+        gnumake
+        handbrake
         haskellPackages.greenclip
+        hledger
         gnome3.adwaita-icon-theme
         gnome3.gnome-keyring
         grim
@@ -27,12 +31,18 @@
         gnome3.gnome-control-center
         gnome3.simple-scan
         git
+        (lowPrio graalvm8)
         htop
+        janet
+        joker
         jq
         kitty
         leiningen
+        libappindicator
+        lua
       	openjdk
         maven
+        mpv
         neofetch
         nixops
         nix-index
