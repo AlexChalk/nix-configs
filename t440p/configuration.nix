@@ -13,6 +13,7 @@ in
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t440p>
       ./hardware-configuration.nix
+      ./suspend.nix
       ./sane-extra-config.nix
     ];
 
@@ -62,6 +63,11 @@ in
     defaultLocale = "en_US.UTF-8";
   };
 
+  services.batteryNotifier = {
+    enable = true;
+    notifyCapacity = 30;
+    suspendCapacity = 15;
+  };
 
   services.gnome3 = {
     gnome-keyring.enable = mkForce false;
@@ -88,7 +94,7 @@ in
   # List packages installed in system profile. To search, run: $ nix search wget
   # nssmdns 
   environment.systemPackages = with pkgs; [
-    git killall lshw lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
+    coreutils dbus git killall lshw libnotify lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
     (
       pkgs.writeTextFile {
         name = "startsway";
@@ -176,6 +182,7 @@ in
       waybar # status bar
       bemenu
       j4-dmenu-desktop
+      gdk-pixbuf # icons for mako
       mako # notification daemon
       kanshi # autorandr
     ];
