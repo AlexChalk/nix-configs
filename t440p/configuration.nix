@@ -182,7 +182,6 @@ in
       waybar # status bar
       bemenu
       j4-dmenu-desktop
-      gdk-pixbuf # icons for mako
       mako # notification daemon
       kanshi # autorandr
     ];
