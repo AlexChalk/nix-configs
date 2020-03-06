@@ -94,7 +94,7 @@ in
   # List packages installed in system profile. To search, run: $ nix search wget
   # nssmdns 
   environment.systemPackages = with pkgs; [
-    coreutils dbus git killall lshw libnotify lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
+    coreutils dbus dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
     (
       pkgs.writeTextFile {
         name = "startsway";
@@ -169,6 +169,25 @@ in
       { keys = [ 224 ]; events = [ "key" ]; command = "light -A 5"; }
       { keys = [ 225 ]; events = [ "key" ]; command = "light -U 5"; }
     ];
+  };
+
+  # https://nixos.wiki/wiki/Dropbox
+  systemd.user.services.dropbox = {
+    description = "Dropbox";
+    wantedBy = [ "graphical-session.target" ];
+    environment = {
+      QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
+      QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
+    };
+    serviceConfig = {
+      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+      KillMode = "control-group";
+      Restart = "on-failure";
+      PrivateTmp = true;
+      ProtectSystem = "full";
+      Nice = 10;
+    };
   };
 
   # Enable the sway windowing system.
