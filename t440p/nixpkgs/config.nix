@@ -40,6 +40,10 @@
         lua
       	openjdk
         maven
+        mono
+        dotnet-sdk
+        dotnetPackages.Nuget
+        fsharp
         mpv
         neofetch
         nixops
