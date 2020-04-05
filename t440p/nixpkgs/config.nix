@@ -12,7 +12,6 @@
         clojure
         (import <nixos-unstable> {}).clojure-lsp
         dropbox-cli
-        evince
         fd
         firefox-wayland
         fzf
@@ -33,7 +32,6 @@
         git
         (lowPrio graalvm8)
         htop
-        janet
         joker
         jq
         kitty
