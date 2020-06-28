@@ -11,6 +11,7 @@
         binutils
         clojure
         (import <nixos-unstable> {}).clojure-lsp
+        dmidecode
         dropbox-cli
         fd
         firefox-wayland
@@ -70,7 +71,7 @@
         wine
         winetricks
         xdg_utils
-        yarn
+        yarn # use yarn instead of npm for global installs
         zathura
         (hiPrio gcc)
         (import <nixos-unstable> {}).skypeforlinux
