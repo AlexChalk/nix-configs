@@ -65,8 +65,8 @@ in
 
   services.batteryNotifier = {
     enable = true;
-    notifyCapacity = 30;
-    suspendCapacity = 15;
+    notifyCapacity = 10;
+    suspendCapacity = 7;
   };
 
   services.gnome3 = {
@@ -277,6 +277,9 @@ in
     shell = pkgs.zsh;
     extraGroups = [ "docker" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
+
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = false;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
