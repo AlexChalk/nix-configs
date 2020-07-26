@@ -31,7 +31,6 @@
         gnome3.gnome-control-center
         gnome3.simple-scan
         git
-        (lowPrio graalvm8)
         htop
         joker
         jq
