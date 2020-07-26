@@ -154,6 +154,7 @@ in
     pulseaudio.enable = true;
   };
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
+
   hardware.sane.enable = true;
   # hardware.sane.netConf = "192.168.0.18";
   services.saned.enable = true;
@@ -275,7 +276,7 @@ in
     isNormalUser = true;
     home = "/home/adc";
     shell = pkgs.zsh;
-    extraGroups = [ "docker" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "audio" "docker" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   system.autoUpgrade.enable = true;
