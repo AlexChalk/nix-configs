@@ -13,6 +13,9 @@
         (import <nixos-unstable> {}).clojure-lsp
         dmidecode
         dropbox-cli
+        elmPackages.elm
+        elmPackages.elm-format
+        elmPackages.elm-test
         fd
         firefox-wayland
         fzf
@@ -34,6 +37,8 @@
         htop
         joker
         jq
+        julia
+        octave
         kitty
         leiningen
         libappindicator
@@ -73,7 +78,6 @@
         yarn # use yarn instead of npm for global installs
         zathura
         (hiPrio gcc)
-        (import <nixos-unstable> {}).skypeforlinux
         (callPackage (import ./packages/neovim.nix) {})
       ];
     };
