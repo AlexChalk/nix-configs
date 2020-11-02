@@ -5,9 +5,10 @@
       name = "adc-packages";
       paths = [
         _1password
+        _1password-gui
         acpi
+        appimage-run
         asciidoctor
-        brave
         binutils
         clojure
         (import <nixos-unstable> {}).clojure-lsp
@@ -37,7 +38,7 @@
         htop
         joker
         jq
-        julia
+        # julia
         octave
         kitty
         leiningen
@@ -62,6 +63,7 @@
         ripgrep
         ruby
         rustup
+        (import <nixos-unstable> {}).signal-desktop
         stack
         subversion
         terraform
@@ -80,6 +82,7 @@
         (hiPrio gcc)
         (callPackage (import ./packages/neovim.nix) {})
       ];
+      pathsToLink = [ "/share" "/bin" ];
     };
   };
 }

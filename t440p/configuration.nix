@@ -7,6 +7,18 @@
 let
   mkForce = lib.mkForce;
   unstable = import <nixos-unstable> {};
+
+  # Ultimate Hacking Keyboard rules
+  # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
+  uhkUdevRules = pkgs.writeTextFile {
+    name = "uhk-dev-rules";
+    text = ''
+      SUBSYSTEM=="input", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", GROUP="input", MODE="0660"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", TAG+="uaccess"
+      KERNEL=="hidraw*", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", TAG+="uaccess"
+      '';
+      destination = "/etc/udev/rules.d/50-uhk60.rules";
+  };
 in
 {
   imports =
@@ -43,6 +55,8 @@ in
   networking.useDHCP = false;
   networking.interfaces.enp0s25.useDHCP = true;
   networking.interfaces.wlp3s0.useDHCP = true;
+
+  services.udev.packages = [ uhkUdevRules ];
 
   fonts.fonts = with pkgs; [
     font-awesome
