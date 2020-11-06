@@ -16,7 +16,7 @@ let
       require 'emoji'
       File.open('emoji_list.txt', 'w') do |f|
         Emoji.all.each do |e|
-          f.puts("#{e.raw} #{e.description} #{e.name}#{(" " + e.tags.join(" ")) if e.tags.any?} (#{e.category})")
+          f.puts(" #{e.raw} #{e.name} — #{e.description}#{(" (" + e.tags.join(", ") + ")") if e.tags.any?} #{e.category}")
         end
       end
       HERE
@@ -31,7 +31,7 @@ pkgs.writeScriptBin "emoji_launcher" ''
   #!${pkgs.zsh}/bin/zsh
 
   emoji_options() {
-    cat ${emoji_list} | sed "s/^/emoji /"
+    cat ${emoji_list}
   }
 
   emoji() {
@@ -43,9 +43,8 @@ pkgs.writeScriptBin "emoji_launcher" ''
 
   if [ -n "$CHOSEN" ]
   then
-    PREFIX=$(echo $CHOSEN | sed "s/^\([^ ]*\) .*/\1/g")
     WORD=$(echo $CHOSEN | sed "s/^[^ ]* \(.*\)/\1/g")
 
-    $PREFIX $WORD
+    emoji $WORD
   fi
 ''
