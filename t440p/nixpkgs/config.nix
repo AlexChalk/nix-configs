@@ -81,6 +81,7 @@
         zathura
         (hiPrio gcc)
         (callPackage (import ./packages/neovim.nix) {})
+        (callPackage (import ./packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
