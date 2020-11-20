@@ -17,6 +17,8 @@
         elmPackages.elm
         elmPackages.elm-format
         elmPackages.elm-test
+        elmPackages.elm-language-server
+        elmPackages.elm-json
         fd
         firefox-wayland
         fzf
@@ -52,6 +54,7 @@
         fsharp
         mpv
         neofetch
+        netlify-cli
         nixops
         nix-index
         nodejs
