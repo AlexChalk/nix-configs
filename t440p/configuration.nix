@@ -39,6 +39,7 @@ in
   # boot.extraModprobeConfig = ''
   #   thinkpad_acpi
   # '';
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288; # default:  8192
 
   networking.hostName = "adc-nixos"; # Define your hostname.
   networking.networkmanager.enable = true; # Enables wireless support via networkmanager.
