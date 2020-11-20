@@ -10,6 +10,7 @@
         appimage-run
         asciidoctor
         binutils
+        bundix
         clojure
         (import <nixos-unstable> {}).clojure-lsp
         dmidecode
