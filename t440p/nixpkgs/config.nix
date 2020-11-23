@@ -5,9 +5,10 @@
       name = "adc-packages";
       paths = [
         _1password
-        _1password-gui
+        (import <nixos-unstable> {})._1password-gui
         acpi
         appimage-run
+        audacity
         castget
         binutils
         bundix
@@ -76,6 +77,7 @@
         (hiPrio gcc)
         (callPackage (import ./packages/neovim.nix) {})
         (callPackage (import ./packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
+        superTuxKart
         gtkpod
         bashmount
         mtools
