@@ -8,6 +8,7 @@
         _1password-gui
         acpi
         appimage-run
+        castget
         binutils
         bundix
         clojure
@@ -75,6 +76,9 @@
         (hiPrio gcc)
         (callPackage (import ./packages/neovim.nix) {})
         (callPackage (import ./packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
+        gtkpod
+        bashmount
+        mtools
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
