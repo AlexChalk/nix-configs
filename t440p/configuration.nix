@@ -57,6 +57,9 @@ in
   networking.interfaces.enp0s25.useDHCP = true;
   networking.interfaces.wlp3s0.useDHCP = true;
 
+  # Check locally hosted dev server from phone
+  networking.firewall.allowedTCPPorts = [ 3000 ];
+
   services.udev.packages = [ uhkUdevRules ];
 
   fonts.fonts = with pkgs; [
