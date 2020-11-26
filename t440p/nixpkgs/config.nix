@@ -10,6 +10,7 @@
         appimage-run
         audacity
         bashmount
+        beets
         binutils
         bundix
         castget
@@ -66,7 +67,8 @@
         stack
         superTuxKart
         terraform
-        texlive.combined.scheme-medium
+        texlab
+        texlive.combined.scheme-full
         tmux
         tree
         universal-ctags
