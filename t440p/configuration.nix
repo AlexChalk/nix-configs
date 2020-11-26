@@ -58,6 +58,7 @@ in
   networking.interfaces.wlp3s0.useDHCP = true;
 
   # Check locally hosted dev server from phone
+  # (ssh port is 22 for future setup)
   networking.firewall.allowedTCPPorts = [ 3000 ];
 
   services.udev.packages = [ uhkUdevRules ];
