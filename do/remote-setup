@@ -4,8 +4,8 @@ set -e
 
 cd $HOME
 
-git clone https://github.com/adc17/dotfiles
-git clone https://github.com/adc17/nix-configs
+git clone https://github.com/AlexChalk/dotfiles
+git clone https://github.com/AlexChalk/nix-configs
 
 mkdir workdir
 

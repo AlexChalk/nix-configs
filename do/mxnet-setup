@@ -10,7 +10,7 @@ cd apache-mxnet
 
 git remote remove origin
 git remote add upstream git@github.com:apache/incubator-mxnet.git
-git remote add origin git@github.com:adc17/incubator-mxnet.git
+git remote add origin git@github.com:AlexChalk/incubator-mxnet.git
 
 # # For working on a version (also requires using matching mxnet image in project.clj)
 # git checkout 1.5.0 -b my_mxnet
