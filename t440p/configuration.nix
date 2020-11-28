@@ -179,7 +179,7 @@ in
   services.saned.enable = true;
   hardware.sane.extraConfig.pixma = ''
     bjnp-timeout=5000
-    bjnp://192.168.0.18
+    bjnp://192.168.0.9
   '';
 
   programs.light.enable = true;
