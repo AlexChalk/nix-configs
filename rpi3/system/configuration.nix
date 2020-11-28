@@ -3,9 +3,10 @@
   # lives in /etc/nixos/configuration.nix
   # NixOS wants to enable GRUB by default
   boot.loader.grub.enable = false;
-
+  # Enables the generation of /boot/extlinux/extlinux.conf
+  boot.loader.generic-extlinux-compatible.enable = true;
   # if you have a Raspberry Pi 2 or 3, pick this:
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # A bunch of boot parameters needed for optimal runtime on RPi 3b+
   boot.kernelParams = ["cma=256M"];
@@ -18,18 +19,14 @@
   '';
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.03;
+  system.autoUpgrade.channel = https://nixos.org/channels/nixos-20.09;
 
   environment.systemPackages = with pkgs; [
-    raspberrypi-tools vim zsh
+    raspberrypi-tools vim bash
   ];
 
   # File systems configuration for using the installer's partition layout
   fileSystems = {
-    "/boot" = {
-      device = "/dev/disk/by-label/NIXOS_BOOT";
-      fsType = "vfat";
-    };
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
@@ -52,18 +49,22 @@
      '';
      })
   ];
-  networking.wireless.enable = true;
+  networking.hostName = "adc-rpi3";
+  networking.networkmanager.enable = true;
+  networking.useDHCP = false;
+  networking.interfaces.enp0s25.useDHCP = true;
+  networking.interfaces.wlp3s0.useDHCP = true;
 
   documentation.nixos.enable = false;
 
   # Preserve space by sacrificing history
   nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than +2";
+  nix.gc.options = "--delete-older-than +5";
   boot.cleanTmpDir = true;
 
   # Configure basic SSH access
   services.openssh.enable = true;
-  services.openssh.permitRootLogin = "yes";
+  services.openssh.permitRootLogin = "no";
 
   # Use 1GB of additional swap memory in order to not run out of memory
   # when installing lots of things while running other things at the same time.
@@ -74,9 +75,9 @@
   users.users.adc = {
     isNormalUser = true;
     home = "/home/adc";
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     description = "adc";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     openssh.authorizedKeys.keys = import ./adc-public-key.nix;
   };
 }
