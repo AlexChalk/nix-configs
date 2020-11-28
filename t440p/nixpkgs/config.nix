@@ -30,6 +30,7 @@
         fzf
         (hiPrio gcc)
         git
+        gitAndTools.gh
         gitAndTools.hub
         gnome3.adwaita-icon-theme
         gnome3.simple-scan
