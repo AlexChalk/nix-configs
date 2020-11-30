@@ -217,6 +217,7 @@ in
       swaybg
       swaylock # lockscreen
       swayidle
+      xdg_utils
       xwayland # for legacy apps
       waybar # status bar
       bemenu
