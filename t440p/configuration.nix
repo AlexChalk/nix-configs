@@ -217,7 +217,8 @@ in
       swaybg
       swaylock # lockscreen
       swayidle
-      xdg_utils
+      xdg_utils # copy from screen
+      libappindicator # tray that just works
       xwayland # for legacy apps
       waybar # status bar
       bemenu
