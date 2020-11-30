@@ -77,11 +77,13 @@
         viewnior
         wf-recorder
         wget
+        whois
         wine
         winetricks
         wl-clipboard
         yarn # use yarn instead of npm for global installs
         zathura
+        zstd
         (callPackage (import ./packages/neovim.nix) {})
         (callPackage (import ./packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
       ];
