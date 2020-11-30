@@ -113,7 +113,7 @@ in
   # List packages installed in system profile. To search, run: $ nix search wget
   # nssmdns 
   environment.systemPackages = with pkgs; [
-    coreutils dbus dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
+    coreutils dbus dmidecode dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
     (
       pkgs.writeTextFile {
         name = "startsway";
