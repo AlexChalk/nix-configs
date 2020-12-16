@@ -103,8 +103,9 @@ in
     cursor-size=24
   '';
 
-  # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt
-  services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin";
+  # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left
+  # Alt, Right Alt as compose key (e.g. for accents)
+  services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin,compose:ralt";
   console.useXkbConfig = true;
 
   # Set your time zone.

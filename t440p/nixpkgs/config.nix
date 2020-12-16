@@ -64,7 +64,7 @@
         ripgrep
         ruby
         rustup
-        (import <nixos-unstable> {}).signal-desktop
+        signal-desktop
         slurp
         stack
         superTuxKart
@@ -73,6 +73,7 @@
         texlive.combined.scheme-full
         tmux
         tree
+        trezord
         universal-ctags
         unzip
         viewnior
@@ -82,8 +83,10 @@
         wine
         winetricks
         wl-clipboard
+        xorg.xkbcomp
         yarn # use yarn instead of npm for global installs
         zathura
+        zoom-us
         zstd
         (callPackage (import ./packages/neovim.nix) {})
         (callPackage (import ./packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
