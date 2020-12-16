@@ -137,6 +137,32 @@ in
     XCURSOR_SIZE = "32";
   };
 
+  services.kbfs = {
+    enable = true;
+    mountPoint = "%t/kbfs";
+    extraFlags = [ "-label %u" ];
+  };
+
+  systemd.user.services.keybase = {
+    serviceConfig.Slice = "keybase.slice";
+  };
+
+  systemd.user.services.kbfs = {
+    environment = { KEYBASE_RUN_MODE = "prod"; };
+    serviceConfig.Slice = "keybase.slice";
+  };
+
+  systemd.user.services.keybase-gui = {
+    description = "Keybase GUI";
+    requires = [ "keybase.service" "kbfs.service" ];
+    after    = [ "keybase.service" "kbfs.service" ];
+    serviceConfig = {
+      ExecStart  = "${pkgs.keybase-gui}/share/keybase/Keybase";
+      PrivateTmp = true;
+      Slice      = "keybase.slice";
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

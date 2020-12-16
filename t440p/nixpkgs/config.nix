@@ -41,6 +41,7 @@
         htop
         joker
         jq
+        keybase-gui
         kitty
         leiningen
         lua
