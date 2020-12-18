@@ -73,7 +73,6 @@
         texlive.combined.scheme-full
         tmux
         tree
-        trezord
         universal-ctags
         unzip
         viewnior

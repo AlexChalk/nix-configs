@@ -88,6 +88,8 @@ in
     suspendCapacity = 7;
   };
 
+  services.trezord.enable = true;
+
   services.gnome3 = {
     gnome-keyring.enable = mkForce false;
     core-os-services.enable = mkForce false;
