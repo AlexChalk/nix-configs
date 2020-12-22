@@ -332,6 +332,19 @@ in
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = false;
 
+  # nix.gc = {
+  #   automatic = true;
+  #   options = "--delete-older-than 14d";
+  #   dates = "03:15";
+  # }
+  #
+  # services.cron = {
+  #   enable = true;
+  #   systemCronJobs = [
+  #     "0 2 * * *    adc    nix-channel --update && nix-env -iA nixos.adcPackages"
+  #   ];
+  # };
+
   # Only update this if you do a completely fresh install.
   # https://nixos.org/nixos/options.html#system.stateversion
   system.stateVersion = "19.09";
