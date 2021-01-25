@@ -8,6 +8,7 @@
         (import <nixos-unstable> {})._1password-gui
         acpi
         appimage-run
+        anki
         audacity
         bashmount
         beets
@@ -61,13 +62,13 @@
         python2Packages.pynvim
         python3
         python3Packages.pynvim
+        rename
         ripgrep
         ruby
         rustup
         signal-desktop
         slurp
         stack
-        superTuxKart
         terraform
         texlab
         texlive.combined.scheme-full
