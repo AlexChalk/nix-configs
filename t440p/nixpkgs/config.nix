@@ -10,13 +10,14 @@
         appimage-run
         anki
         audacity
+        babashka
         bashmount
         beets
         binutils
         bundix
         castget
         clojure
-        (import <nixos-unstable> {}).clojure-lsp
+        clojure-lsp
         dotnet-sdk
         dotnetPackages.Nuget
         dropbox-cli
@@ -38,6 +39,7 @@
         gnumake
         grim
         gtkpod
+        heroku
         hledger
         htop
         joker
@@ -87,6 +89,7 @@
         yarn # use yarn instead of npm for global installs
         zathura
         zoom-us
+        teams
         zstd
         (callPackage (import ./packages/neovim.nix) {})
         (callPackage (import ./packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
