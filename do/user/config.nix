@@ -25,7 +25,7 @@
         wget
         yarn
         leiningen
-        (callPackage (import ./packages/neovim.nix) {})
+        (callPackage (import ../../packages/neovim.nix) {})
       ];
     };
   };

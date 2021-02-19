@@ -15,7 +15,8 @@ sudo mv /etc/nixos/hardware-configuration.nix $HOME/nix-configs/t440p/hardware-c
 sudo ln -s $HOME/nix-configs/t440p/etc/nixos/* /etc/nixos
 
 # User config
-ln -s $HOME/nix-configs/t440p/nixpkgs $HOME/.config
+mkdir $HOME/.config/nixpkgs
+ln -s $HOME/nix-configs/t440p/nixpkgs/config.nix $HOME/.config/nixpkgs
 
 # Fonts
 git clone git@github.com:AlexChalk/fonts-private.git $HOME/.local/share/fonts
