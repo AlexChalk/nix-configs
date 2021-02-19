@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd $HOME
+
+# User config
+mkdir -p $HOME/.config/nixpkgs
+ln -s $HOME/nix-configs/mac/nixpkgs/config.nix $HOME/.config/nixpkgs
