@@ -10,7 +10,6 @@
         clojure-lsp
         curl
         fd
-        firefox
         fzf
         gawk
         git
@@ -21,7 +20,6 @@
         heroku
         htop
         jq
-        kitty
         neofetch
         ngrok
         nodejs-12_x
@@ -33,17 +31,15 @@
         ripgrep
         rlwrap
         ruby
-        skhd
         tmux
         tree
         universal-ctags
         watchman
         wget
         whois
-        yabai
         yarn
         zathura
-        (callPackage (import ./packages/neovim.nix) {})
+        (callPackage (import ../../packages/neovim.nix) {})
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
