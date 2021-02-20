@@ -33,12 +33,14 @@
         ripgrep
         rlwrap
         ruby
+        skhd
         tmux
         tree
         universal-ctags
         watchman
         wget
         whois
+        yabai
         yarn
         zathura
         (callPackage (import ./packages/neovim.nix) {})
