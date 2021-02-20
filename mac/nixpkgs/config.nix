@@ -7,7 +7,7 @@
         anki
         babashka
         binutils
-        clojure-lsp
+        # clojure-lsp
         curl
         fd
         fzf
@@ -25,7 +25,6 @@
         nodejs-12_x
         pandoc
         python3
-        python3Packages.pynvim
         pipenv
         rename
         ripgrep
