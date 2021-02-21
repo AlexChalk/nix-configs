@@ -15,7 +15,7 @@
         beets
         binutils
         bundix
-        castget
+        castget # rss enclosure downloader
         clojure
         clojure-lsp
         dotnet-sdk
@@ -50,8 +50,8 @@
         lua
         maven
         mono
-        mpv
-        mtools
+        mpv # media player
+        mtools # read ms-dos disks
         neofetch
         netlify-cli
         nix-index
@@ -60,10 +60,7 @@
         octave
         openjdk
         pandoc
-        python2
-        python2Packages.pynvim
         python3
-        python3Packages.pynvim
         rename
         ripgrep
         ruby
@@ -90,7 +87,7 @@
         zathura
         zoom-us
         teams
-        zstd
+        zstd # compression algorithm
         (callPackage (import ../../packages/neovim.nix) {})
         (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
       ];
