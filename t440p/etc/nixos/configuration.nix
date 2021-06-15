@@ -90,7 +90,7 @@ in
 
   services.trezord.enable = true;
 
-  services.gnome3 = {
+  services.gnome = {
     gnome-keyring.enable = mkForce false;
     core-os-services.enable = mkForce false;
     core-utilities.enable = mkForce false;
@@ -98,8 +98,8 @@ in
     core-shell.enable = true;
   };
   # services.xserver.desktopManager.default = "none";
-  services.xserver.desktopManager.gnome3.enable = true;
-  services.xserver.desktopManager.gnome3.extraGSettingsOverrides = ''
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
     [org.gnome.desktop.interface]
     cursor-theme='Adwaita'
     cursor-size=24
