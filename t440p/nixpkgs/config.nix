@@ -55,7 +55,7 @@
         neofetch
         netlify-cli
         nix-index
-        nixops
+        nixopsUnstable
         nodejs
         octave
         openjdk
