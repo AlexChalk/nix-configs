@@ -6,10 +6,12 @@
       paths = [
         anki
         awscli2
-        babashka
+        aws-mfa
+        # babashka
         binutils
-        # clojure-lsp
+        # (import <nixpkgs-stable> {}).clojure-lsp
         curl
+        envsubst
         fd
         fzf
         gawk
@@ -23,14 +25,27 @@
         jq
         mariadb-client
         neofetch
+        # niv
+        # nox
+        # lorri
+        # direnv
         ngrok
         nodejs-12_x
+        nodePackages.redoc-cli
         pandoc
-        poetry
-        python3
-        python37Packages.flake8
-        python37Packages.black
-        pipenv
+        python37
+        python37Packages.poetry
+        python37Packages.tox
+        # python37Packages.debugpy
+        # python37Packages.pre-commit
+        # python37Packages.python-language-server
+        # python37Packages.pyls-isort
+        # python37Packages.pyls-black
+        # python37Packages.jedi
+        # python37Packages.flake8
+        # python37Packages.black
+        # (import <nixpkgs-stable> {}).python37Packages.pipx
+        # pipenv
         rename
         ripgrep
         rlwrap
@@ -39,13 +54,17 @@
         tmux
         tmux-xpanes
         tree
-        universal-ctags
+        # universal-ctags
         watchman
         wget
         whois
         yarn
         zathura
+        vault
+        envconsul
         (callPackage (import ../../packages/neovim.nix) {})
+        # cairo
+        # gnome2.pango
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
