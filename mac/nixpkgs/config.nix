@@ -7,9 +7,7 @@
         anki
         awscli2
         aws-mfa
-        babashka
         binutils
-        (import <nixpkgs-stable> {}).clojure-lsp
         curl
         envsubst
         fd
