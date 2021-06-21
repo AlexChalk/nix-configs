@@ -27,9 +27,9 @@
         nodejs-12_x
         nodePackages.redoc-cli
         pandoc
-        python37
-        python37Packages.poetry
-        python37Packages.tox
+        (import <nixpkgs-20_09-darwin> {}).python37
+        (import <nixpkgs-20_09-darwin> {}).python37Packages.poetry
+        (import <nixpkgs-20_09-darwin> {}).python37Packages.tox
         rename
         ripgrep
         rlwrap
