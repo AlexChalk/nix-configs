@@ -7,9 +7,9 @@
         anki
         awscli2
         aws-mfa
-        # babashka
+        babashka
         binutils
-        # (import <nixpkgs-stable> {}).clojure-lsp
+        (import <nixpkgs-stable> {}).clojure-lsp
         curl
         envsubst
         fd
@@ -25,10 +25,6 @@
         jq
         mariadb-client
         neofetch
-        # niv
-        # nox
-        # lorri
-        # direnv
         ngrok
         nodejs-12_x
         nodePackages.redoc-cli
@@ -36,16 +32,6 @@
         python37
         python37Packages.poetry
         python37Packages.tox
-        # python37Packages.debugpy
-        # python37Packages.pre-commit
-        # python37Packages.python-language-server
-        # python37Packages.pyls-isort
-        # python37Packages.pyls-black
-        # python37Packages.jedi
-        # python37Packages.flake8
-        # python37Packages.black
-        # (import <nixpkgs-stable> {}).python37Packages.pipx
-        # pipenv
         rename
         ripgrep
         rlwrap
@@ -54,7 +40,6 @@
         tmux
         tmux-xpanes
         tree
-        # universal-ctags
         watchman
         wget
         whois
@@ -63,8 +48,6 @@
         vault
         envconsul
         (callPackage (import ../../packages/neovim.nix) {})
-        # cairo
-        # gnome2.pango
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
