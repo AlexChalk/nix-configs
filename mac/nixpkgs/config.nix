@@ -24,7 +24,7 @@
         mariadb-client
         neofetch
         ngrok
-        nodejs-12_x
+        nodejs-14_x
         nodePackages.redoc-cli
         pandoc
         (import <nixpkgs-20_09-darwin> {}).python37
