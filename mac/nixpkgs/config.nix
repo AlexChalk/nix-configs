@@ -44,7 +44,7 @@
         whois
         yarn
         zathura
-        vault
+        (import <nixpkgs-20_09-darwin> {}).vault
         envconsul
         (callPackage (import ../../packages/neovim.nix) {})
       ];
