@@ -13,6 +13,7 @@
         fd
         fzf
         gawk
+        graphviz
         git
         gitAndTools.gh
         gitAndTools.hub
