@@ -88,7 +88,7 @@
         zoom-us
         teams
         zstd # compression algorithm
-        (callPackage (import ../../packages/neovim.nix) {})
+        (callPackage (import ../../packages/neovim.nix) { pkgs = import <nixos-unstable> {}; })
         (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
       ];
       pathsToLink = [ "/share" "/bin" ];
