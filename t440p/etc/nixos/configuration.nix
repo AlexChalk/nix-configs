@@ -32,7 +32,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.pulseaudio = true;
 
-  boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
+  # boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -347,5 +347,5 @@ in
 
   # Only update this if you do a completely fresh install.
   # https://nixos.org/nixos/options.html#system.stateversion
-  system.stateVersion = "19.09";
+  system.stateVersion = "21.05";
 }
