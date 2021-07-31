@@ -30,7 +30,7 @@ in
     ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.pulseaudio = true;
+  # nixpkgs.config.pulseaudio = true;
 
   # boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
   # Use the systemd-boot EFI boot loader.
@@ -116,7 +116,7 @@ in
   # List packages installed in system profile. To search, run: $ nix search wget
   # nssmdns 
   environment.systemPackages = with pkgs; [
-    coreutils dbus dmidecode dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils qemu_kvm vim virtmanager wget zsh
+    alsaUtils coreutils dbus dmidecode dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils pulseaudio qemu_kvm vim virtmanager wget zsh
     (
       pkgs.writeTextFile {
         name = "startsway";
@@ -191,17 +191,30 @@ in
   services.avahi.nssmdns = true;
 
   # Enable sound.
-  sound.enable = true;
-  sound.mediaKeys.enable = true;
+  # sound.enable = true;
+  # sound.mediaKeys.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
 
   # Other hardware
   hardware = {
     enableAllFirmware = true;
-    bluetooth.enable = true;
+    # bluetooth.enable = true;
     opengl.enable = true;
-    pulseaudio.enable = true;
+    # pulseaudio.enable = true;
   };
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  # hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   hardware.sane.enable = true;
   # hardware.sane.netConf = "192.168.0.18";
