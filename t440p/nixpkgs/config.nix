@@ -60,6 +60,7 @@
         octave
         openjdk
         pandoc
+        parted
         python3
         rename
         ripgrep
