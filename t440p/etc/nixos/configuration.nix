@@ -74,6 +74,7 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
 
   console = {
+    earlySetup = true;
     packages = [ pkgs.terminus_font ];
     font = "ter-122n";
     colors = [ 
