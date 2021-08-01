@@ -30,25 +30,14 @@ in
     ];
 
   nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.pulseaudio = true;
 
-  # boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.extraModprobeConfig = ''
-  #   thinkpad_acpi
-  # '';
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288; # default:  8192
 
   networking.hostName = "adc-nixos"; # Define your hostname.
   networking.networkmanager.enable = true; # Enables wireless support via networkmanager.
-  # networking.wireless.enable = false;
-  # networking.extraHosts =
-  # ''
-  #   192.168.0.18 printer
-  #   2a9add000000.local
-  # '';
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -98,7 +87,7 @@ in
     games.enable = mkForce false;
     core-shell.enable = true;
   };
-  # services.xserver.desktopManager.default = "none";
+
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
     [org.gnome.desktop.interface]
@@ -115,7 +104,6 @@ in
   time.timeZone = "America/Montreal";
 
   # List packages installed in system profile. To search, run: $ nix search wget
-  # nssmdns 
   environment.systemPackages = with pkgs; [
     alsaUtils coreutils dbus dmidecode dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils pulseaudio qemu_kvm vim virtmanager wget zsh
     (
@@ -169,6 +157,7 @@ in
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
+  #
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
@@ -192,8 +181,6 @@ in
   services.avahi.nssmdns = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # sound.mediaKeys.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -211,14 +198,10 @@ in
   # Other hardware
   hardware = {
     enableAllFirmware = true;
-    # bluetooth.enable = true;
     opengl.enable = true;
-    # pulseaudio.enable = true;
   };
-  # hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   hardware.sane.enable = true;
-  # hardware.sane.netConf = "192.168.0.18";
   services.saned.enable = true;
   hardware.sane.extraConfig.pixma = ''
     bjnp-timeout=5000
@@ -309,8 +292,6 @@ in
     temperature.night = 1900;
   };
 
-  # programs.waybar.enable = true;
-
   systemd.user.services.kanshi = {
     description = "Kanshi output autoconfig ";
     wantedBy = [ "graphical-session.target" ];
@@ -335,7 +316,7 @@ in
     onShutdown = "shutdown";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.adc = {
     isNormalUser = true;
     home = "/home/adc";
@@ -345,19 +326,6 @@ in
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = false;
-
-  # nix.gc = {
-  #   automatic = true;
-  #   options = "--delete-older-than 14d";
-  #   dates = "03:15";
-  # }
-  #
-  # services.cron = {
-  #   enable = true;
-  #   systemCronJobs = [
-  #     "0 2 * * *    adc    nix-channel --update && nix-env -iA nixos.adcPackages"
-  #   ];
-  # };
 
   # Only update this if you do a completely fresh install.
   # https://nixos.org/nixos/options.html#system.stateversion
