@@ -4,11 +4,11 @@
     adcPackages = pkgs.buildEnv {
       name = "adc-packages";
       paths = [
-        anki
         awscli2
         aws-mfa
         binutils
         curl
+        eksctl
         envsubst
         fd
         fzf
@@ -24,17 +24,18 @@
         jq
         mariadb-client
         neofetch
-        ngrok
         nodejs-14_x
         nodePackages.redoc-cli
         pandoc
-        (import <nixpkgs-20_09-darwin> {}).python37
-        (import <nixpkgs-20_09-darwin> {}).python37Packages.poetry
-        (import <nixpkgs-20_09-darwin> {}).python37Packages.tox
+        (import <nixpkgs-stable> {}).python37
+        (import <nixpkgs-stable> {}).python37Packages.poetry
+        (import <nixpkgs-stable> {}).python37Packages.pre-commit
+        (import <nixpkgs-stable> {}).python37Packages.tox
         rename
         ripgrep
         rlwrap
         ruby
+        sonar-scanner-cli
         terraform
         tmux
         tmux-xpanes
@@ -44,6 +45,7 @@
         whois
         yarn
         zathura
+        zsh
         (import <nixpkgs-20_09-darwin> {}).vault
         envconsul
         (callPackage (import ../../packages/neovim.nix) {})
