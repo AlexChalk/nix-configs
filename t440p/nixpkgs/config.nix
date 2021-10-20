@@ -16,18 +16,17 @@
         binutils
         bundix
         castget # rss enclosure downloader
-        clojure
-        clojure-lsp
+        (import <nixos-unstable> {}).clojure
+        curl
         dotnet-sdk
         dotnetPackages.Nuget
         dropbox-cli
         elmPackages.elm
         elmPackages.elm-format
         elmPackages.elm-json
-        elmPackages.elm-language-server
         elmPackages.elm-test
         fd
-        firefox-wayland
+        (import <nixos-20-09> {}).firefox-wayland
         fsharp
         fzf
         (hiPrio gcc)
@@ -70,7 +69,6 @@
         slurp
         stack
         terraform
-        texlab
         texlive.combined.scheme-full
         tmux
         tree
@@ -91,6 +89,23 @@
         zstd # compression algorithm
         (callPackage (import ../../packages/neovim.nix) { pkgs = import <nixos-unstable> {}; })
         (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
+        # Language servers
+        (import <nixos-unstable> {}).clojure-lsp
+        elmPackages.elm-language-server
+        haskell-language-server
+        nodePackages.bash-language-server
+        nodePackages.dockerfile-language-server-nodejs
+        nodePackages.pyright
+        nodePackages.typescript-language-server
+        nodePackages.vim-language-server
+        nodePackages.vscode-json-languageserver
+        rnix-lsp
+        rust-analyzer
+        shellcheck
+        (import <nixos-unstable> {}).stylua
+        terraform-ls
+        texlab
+        sumneko-lua-language-server
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
