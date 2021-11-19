@@ -16,6 +16,8 @@
         binutils
         bundix
         castget # rss enclosure downloader
+        circleci-cli
+        clj-kondo
         (import <nixos-unstable> {}).clojure
         curl
         dotnet-sdk
@@ -41,23 +43,25 @@
         heroku
         hledger
         htop
+        insomnia
         joker
         jq
         keybase-gui
         kitty
         leiningen
-        lua
+        lua5_1
         maven
         mono
         mpv # media player
         mtools # read ms-dos disks
         neofetch
         netlify-cli
+        ngrok
         nix-index
         nixopsUnstable
         nodejs
         octave
-        openjdk
+        jdk11
         pandoc
         parted
         python3
@@ -89,6 +93,7 @@
         zstd # compression algorithm
         (callPackage (import ../../packages/neovim.nix) { pkgs = import <nixos-unstable> {}; })
         (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
+        (import <nixos-unstable> {}).stylua
         # Language servers
         (import <nixos-unstable> {}).clojure-lsp
         elmPackages.elm-language-server
