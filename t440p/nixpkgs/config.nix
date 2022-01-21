@@ -28,6 +28,7 @@
         elmPackages.elm-json
         elmPackages.elm-test
         fd
+        ffmpeg
         (import <nixos-20-09> {}).firefox-wayland
         fsharp
         fzf
