@@ -72,6 +72,8 @@
         rustup
         signal-desktop
         slurp
+        (import <nixos-unstable> {}).sqlfluff
+        (import <nixos-unstable> {}).nodePackages.sql-formatter
         stack
         terraform
         texlive.combined.scheme-full
