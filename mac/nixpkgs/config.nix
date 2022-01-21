@@ -5,7 +5,8 @@
       name = "adc-packages";
       paths = [
         awscli2
-        aws-mfa
+        (import <nixpkgs-stable> {}).aws-mfa
+        bash
         binutils
         curl
         eksctl
@@ -19,34 +20,44 @@
         gitAndTools.hub
         gnumake
         gnused
+        go
+        google-cloud-sdk
         heroku
         htop
         jq
-        mariadb-client
+        yq
+        minikube
+        kustomize
+        (import <nixpkgs-stable> {}).mysql57
         neofetch
         nodejs-14_x
+        nodePackages.bash-language-server
         nodePackages.redoc-cli
         pandoc
         (import <nixpkgs-stable> {}).python37
-        (import <nixpkgs-stable> {}).python37Packages.poetry
         (import <nixpkgs-stable> {}).python37Packages.pre-commit
         (import <nixpkgs-stable> {}).python37Packages.tox
+        poetry
+        python39Packages.pipx
         rename
         ripgrep
         rlwrap
         ruby
+        shellcheck
+        shfmt
         sonar-scanner-cli
-        terraform
+        terraform_0_12
         tmux
         tmux-xpanes
         tree
+        watch
         watchman
         wget
         whois
-        yarn
+        (import <nixpkgs-stable> {}).yarn
         zathura
         zsh
-        (import <nixpkgs-20_09-darwin> {}).vault
+        vault
         envconsul
         (callPackage (import ../../packages/neovim.nix) {})
       ];

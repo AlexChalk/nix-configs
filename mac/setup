@@ -5,3 +5,5 @@ cd $HOME
 # User config
 mkdir -p $HOME/.config/nixpkgs
 ln -s $HOME/nix-configs/mac/nixpkgs/config.nix $HOME/.config/nixpkgs
+mkdir -p $HOME/.config/nix
+ln -s $HOME/nix-configs/mac/nix/nix.conf $HOME/.config/nix
