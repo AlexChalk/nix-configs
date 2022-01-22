@@ -3,7 +3,10 @@
   packageOverrides = pkgs: {
     adcPackages = with pkgs; 
       let 
-        python3WithLibs = python3.withPackages (p: [ p.debugpy ]);
+        python-libs = python-libs: with python-libs; [
+          debugpy
+        ];
+        python3WithLibs = python3.withPackages python-libs;
       in pkgs.buildEnv {
         name = "adc-packages";
         paths = [
