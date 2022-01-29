@@ -287,7 +287,7 @@ in
 
   services.redshift = {
     enable = true;
-    package = unstable.redshift-wlr;
+    package = pkgs.gammastep;
     temperature.day = 5000;
     temperature.night = 1900;
   };
@@ -310,8 +310,8 @@ in
 
   virtualisation.libvirtd = {
     enable = true;
-    qemuOvmf = true;
-    qemuRunAsRoot = false;
+    qemu.ovmf.enable = true;
+    qemu.runAsRoot = false;
     onBoot = "ignore";
     onShutdown = "shutdown";
   };
