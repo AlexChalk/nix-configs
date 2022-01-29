@@ -29,7 +29,7 @@
         elmPackages.elm-test
         fd
         ffmpeg
-        (import <nixos-20-09> {}).firefox-wayland
+        (import <nixos-unstable> {}).firefox-wayland
         fsharp
         fzf
         (hiPrio gcc)
