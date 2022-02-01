@@ -34,7 +34,7 @@
           yq
           minikube
           kustomize
-          (import <nixpkgs-stable> {}).mysql57
+          # (import <nixpkgs-stable> {}).mysql57
           neofetch
           nodejs-14_x
           nodePackages.bash-language-server
@@ -51,7 +51,7 @@
           ruby
           shellcheck
           shfmt
-          sonar-scanner-cli
+          # sonar-scanner-cli
           stylua
           (import <nixpkgs-stable> {}).terraform_0_12
           tmux
