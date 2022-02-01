@@ -52,7 +52,8 @@
           shellcheck
           shfmt
           sonar-scanner-cli
-          terraform_0_12
+          stylua
+          (import <nixpkgs-stable> {}).terraform_0_12
           tmux
           tmux-xpanes
           tree
