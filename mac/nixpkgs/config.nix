@@ -7,6 +7,14 @@
           debugpy
         ];
         python3WithLibs = python3.withPackages python-libs;
+        mariadb = pkgs.mariadb.overrideAttrs (oldAttrs: rec {
+          cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+            "-DPLUGIN_AUTH_PAM=NO"
+          ] ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+            "-DPLUGIN_AUTH_PAM=NO"
+            "-DPLUGIN_AUTH_PAM_V1=NO"
+          ];
+        });
       in pkgs.buildEnv {
         name = "adc-packages";
         paths = [
@@ -34,7 +42,7 @@
           yq
           minikube
           kustomize
-          # (import <nixpkgs-stable> {}).mysql57
+          mariadb
           neofetch
           nodejs-14_x
           nodePackages.bash-language-server
