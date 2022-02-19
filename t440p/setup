@@ -2,14 +2,18 @@
 
 cd $HOME
 
+# ln Bash
 sudo ln -s $(which bash) /bin/bash
 
+# Channel setup
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware 
 sudo nix-channel --update
 
-nix-channel --add https://nixos.org/channels/nixos-21.05 nixos
+nix-channel --add https://nixos.org/channels/nixos-21.11 nixos
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable 
 nix-channel --update
+
+# Backup default system configs, link version-controlled configs
 
 # Backup existing system config
 sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.old
@@ -18,10 +22,10 @@ mv $HOME/nix-configs/t440p/etc/nixos/hardware-configuration.nix $HOME/nix-config
 # Version control new hardware config
 sudo mv /etc/nixos/hardware-configuration.nix $HOME/nix-configs/t440p/etc/nixos/hardware-configuration.nix
 
-# System config
+# Add version-controlled system config
 sudo ln -s $HOME/nix-configs/t440p/etc/nixos/* /etc/nixos
 
-# User config
+# Add version-controlled user config
 mkdir -p $HOME/.config/nixpkgs
 ln -s $HOME/nix-configs/t440p/nixpkgs/config.nix $HOME/.config/nixpkgs
 
@@ -37,9 +41,6 @@ git clone git@github.com:AlexChalk/fonts-private.git $HOME/.local/share/fonts
 git clone git@github.com:b0o/swaynagmode.git
 mkdir bin-personal &> /dev/null
 ln -s $HOME/swaynagmode/swaynagmode $HOME/bin-personal/swaynagmode
-
-# Zinit
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 # Vim Plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
