@@ -22,10 +22,13 @@
           (import <nixpkgs-stable> {}).aws-mfa
           bash
           binutils
+          bundix
           curl
           eksctl
           envsubst
           fd
+          ffmpeg
+          flac
           fzf
           gawk
           graphviz
@@ -38,11 +41,14 @@
           google-cloud-sdk
           heroku
           htop
+          imagemagick
           jq
           yq
           minikube
           kustomize
           mariadb
+          # mp3info
+          mp3val
           neofetch
           nodejs-14_x
           nodePackages.bash-language-server
@@ -53,6 +59,7 @@
           python3Packages.pipx
           pre-commit
           poetry
+          rclone
           rename
           ripgrep
           rlwrap
