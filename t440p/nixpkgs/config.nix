@@ -27,6 +27,7 @@
         elmPackages.elm-format
         elmPackages.elm-json
         elmPackages.elm-test
+        (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
         fd
         ffmpeg
         (import <nixos-unstable> {}).firefox-wayland
@@ -40,7 +41,8 @@
         gnome3.simple-scan
         gnumake
         grim
-        gtkpod
+        faad2
+        mp4v2
         heroku
         hledger
         htop
@@ -94,26 +96,37 @@
         zoom-us
         teams
         zstd # compression algorithm
+        # Neovim
         (callPackage (import ../../packages/neovim.nix) { pkgs = import <nixos-unstable> {}; })
-        (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
-        (import <nixos-unstable> {}).stylua
-        # Language servers
+        # Language servers/formatters for neovim
+        clang-tools
         (import <nixos-unstable> {}).clojure-lsp
         elmPackages.elm-language-server
-        haskell-language-server
+        gopls
+        (import <nixos-unstable> {}).haskell-language-server
         nodePackages.bash-language-server
         nodePackages.dockerfile-language-server-nodejs
         nodePackages.pyright
         nodePackages.typescript-language-server
-        nodePackages.vim-language-server
+        nodePackages.vscode-langservers-extracted
         nodePackages.vscode-json-languageserver
+        nodePackages.yaml-language-server
         rnix-lsp
+        sumneko-lua-language-server
+        terraform-ls
+        rubyPackages.solargraph
         rust-analyzer
         shellcheck
         (import <nixos-unstable> {}).stylua
-        terraform-ls
         texlab
-        sumneko-lua-language-server
+        # linters/diagnostics/formatters
+        nodePackages.eslint
+        python39Packages.flake8
+        pgformatter
+        shfmt
+        black
+        mypy
+        shfmt
       ];
       pathsToLink = [ "/share" "/bin" ];
     };
