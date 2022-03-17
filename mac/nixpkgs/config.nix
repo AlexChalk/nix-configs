@@ -27,13 +27,13 @@
           curl
           # ddrescue
           eksctl
+          envconsul
           envsubst
           fd
           ffmpeg
           flac
           fzf
           gawk
-          graphviz
           git
           gitAndTools.gh
           gitAndTools.hub
@@ -41,25 +41,25 @@
           gnused
           go
           google-cloud-sdk
+          graphviz
           heroku
           htop
           imagemagick
           jq
-          yq
-          minikube
           kustomize
           mariadb
+          minikube
           # mp3info
           mp3val
           neofetch
-          nodejs-14_x
           nodePackages.redoc-cli
+          nodejs-14_x
           pandoc
-          python3WithLibs
-          python3Packages.tox
-          python3Packages.pipx
-          pre-commit
           poetry
+          pre-commit
+          python3Packages.pipx
+          python3Packages.tox
+          python3WithLibs
           rclone
           rename
           ripgrep
@@ -71,15 +71,15 @@
           tmux
           tmux-xpanes
           tree
+          vault
           watch
           watchman
           wget
           whois
           (import <nixpkgs-stable> { }).yarn
+          yq
           zathura
           zsh
-          vault
-          envconsul
           (callPackage (import ../../packages/neovim.nix) { })
           # language servers
           nodePackages.bash-language-server
