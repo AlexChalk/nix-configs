@@ -85,7 +85,7 @@
           nodePackages.bash-language-server
           nodePackages.dockerfile-language-server-nodejs
           nodePackages.pyright
-          nodePackages.typescript-language-server
+          (import <nixpkgs-stable> { }).nodePackages.typescript-language-server
           nodePackages.vscode-langservers-extracted
           nodePackages.vscode-json-languageserver
           nodePackages.yaml-language-server
