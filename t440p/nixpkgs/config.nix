@@ -41,8 +41,6 @@
         gnome3.simple-scan
         gnumake
         grim
-        faad2
-        mp4v2
         heroku
         hledger
         htop
