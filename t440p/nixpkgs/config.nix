@@ -30,7 +30,7 @@
         (callPackage (import ../../packages/emoji-launcher.nix) { inherit pkgs; stdenv = pkgs.stdenv; })
         fd
         ffmpeg
-        (import <nixos-unstable> {}).firefox-wayland
+        firefox-wayland
         fsharp
         fzf
         (hiPrio gcc)
