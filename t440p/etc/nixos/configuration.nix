@@ -204,7 +204,7 @@ in
   hardware.sane.enable = true;
   services.saned.enable = true;
   hardware.sane.extraConfig.pixma = ''
-    bjnp-timeout=5000
+    bjnp-timeout=10000
     bjnp://192.168.0.9
   '';
 
