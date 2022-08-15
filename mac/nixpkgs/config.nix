@@ -6,7 +6,8 @@
         python-libs = python-libs: with python-libs; [
           # debugpy
         ];
-        python3WithLibs = (import <nixpkgs-stable> { }).python3.withPackages python-libs;
+        python3WithLibs = python3.withPackages python-libs;
+        rubyWithLibs = ruby_3_1.withPackages (ps: with ps; [ /* rails */ solargraph ]);
       in
       pkgs.buildEnv {
         name = "adc-packages";
@@ -28,7 +29,7 @@
           gawk
           git
           gitAndTools.gh
-          gitAndTools.hub
+          (import <nixpkgs-stable> { }).gitAndTools.hub
           gnumake
           gnused
           go
@@ -50,17 +51,20 @@
           pandoc
           poetry
           pre-commit
-          (import <nixpkgs-21-11> { }).python3Packages.pipx
+          python3Packages.databricks-cli
+          python3Packages.pipx
           python3Packages.tox
           python3WithLibs
           rclone
           rename
           ripgrep
           rlwrap
-          ruby_3_1
+          rubyWithLibs
           shellcheck
           # sonar-scanner-cli
-          (import <nixpkgs-21-11> { }).terraform_0_12
+          tfswitch
+          # (import <nixpkgs-stable> { }).terraform_0_13
+          # (import <nixpkgs-stable> { }).terraform-providers.template
           texlive.combined.scheme-full
           tmux
           tmux-xpanes
@@ -71,7 +75,7 @@
           wget
           whois
           (import <nixpkgs-stable> { }).yarn
-          (import <nixpkgs-21-11> { }).yq
+          yq
           zsh
           (callPackage (import ../../packages/neovim.nix) { })
           # language servers
@@ -83,7 +87,6 @@
           nodePackages.vscode-json-languageserver
           nodePackages.yaml-language-server
           rnix-lsp
-          rubyPackages.rails
           sumneko-lua-language-server
           terraform-ls
           texlab
@@ -91,10 +94,9 @@
           nodePackages.eslint
           python3Packages.flake8
           pgformatter
-          rubyPackages.solargraph
           shfmt
           stylua
-          (import <nixpkgs-21-11> { }).black
+          black
           mypy
         ];
         pathsToLink = [ "/share" "/bin" ];
