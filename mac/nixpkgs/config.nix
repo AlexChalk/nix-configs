@@ -8,6 +8,8 @@
         ];
         python3WithLibs = python3.withPackages python-libs;
         rubyWithLibs = ruby_3_1.withPackages (ps: with ps; [ /* rails */ solargraph ]);
+        nodejs = nodejs-14_x;
+        yarn' = yarn.override { inherit nodejs; };
       in
       pkgs.buildEnv {
         name = "adc-packages";
@@ -32,6 +34,7 @@
           (import <nixpkgs-stable> { }).gitAndTools.hub
           gnumake
           gnused
+          gnutar
           go
           google-cloud-sdk
           graphviz
@@ -41,13 +44,14 @@
           jq
           kustomize
           libyaml
-          mariadb
+          mysql57
           minikube
           # mp3info
           mp3val
+          mysql-shell
           # neofetch
           nodePackages.redoc-cli
-          nodejs-14_x
+          nodejs
           pandoc
           poetry
           pre-commit
@@ -74,7 +78,7 @@
           watchman
           wget
           whois
-          (import <nixpkgs-stable> { }).yarn
+          yarn'
           yq
           zsh
           (callPackage (import ../../packages/neovim.nix) { })
@@ -93,6 +97,7 @@
           # linters/diagnostics/formatters
           nodePackages.eslint
           python3Packages.flake8
+          python3Packages.reorder-python-imports
           pgformatter
           shfmt
           stylua
