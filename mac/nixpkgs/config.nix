@@ -4,7 +4,7 @@
     adcPackages = with pkgs;
       let
         python-libs = python-libs: with python-libs; [
-          # debugpy
+          debugpy
         ];
         python3WithLibs = python3.withPackages python-libs;
         rubyWithLibs = ruby_3_1.withPackages (ps: with ps; [ /* rails */ solargraph ]);
@@ -53,12 +53,13 @@
           nodePackages.redoc-cli
           nodejs
           pandoc
-          poetry
+          (import <nixpkgs-stable> { }).poetry
           pre-commit
           python3Packages.databricks-cli
           python3Packages.pipx
           python3Packages.tox
           python3WithLibs
+          t
           rclone
           rename
           ripgrep
