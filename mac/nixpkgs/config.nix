@@ -19,6 +19,7 @@
           bash
           binutils
           bundix
+          csvkit
           curl
           # ddrescue
           eksctl
