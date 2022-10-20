@@ -22,7 +22,7 @@
         curl
         dotnet-sdk
         dotnetPackages.Nuget
-        dropbox-cli
+        (import <nixos-unstable> {}).dropbox-cli
         elmPackages.elm
         elmPackages.elm-format
         elmPackages.elm-json
