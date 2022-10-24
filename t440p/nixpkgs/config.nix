@@ -44,6 +44,7 @@
         heroku
         hledger
         htop
+        imagemagick
         insomnia
         joker
         jq
