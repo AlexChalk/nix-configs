@@ -19,6 +19,7 @@
           bash
           binutils
           bundix
+          clojure
           csvkit
           curl
           # ddrescue
