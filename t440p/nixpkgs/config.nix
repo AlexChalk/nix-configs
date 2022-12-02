@@ -14,6 +14,8 @@
         bashmount
         beets
         binutils
+        bitwarden
+        bitwarden-cli
         bundix
         castget # rss enclosure downloader
         circleci-cli
