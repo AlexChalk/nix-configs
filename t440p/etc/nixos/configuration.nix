@@ -6,7 +6,7 @@
 
 let
   mkForce = lib.mkForce;
-  unstable = import <nixos-unstable> {};
+  unstable = import <nixos-unstable> { };
 
   # Ultimate Hacking Keyboard rules
   # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
@@ -16,13 +16,14 @@ let
       SUBSYSTEM=="input", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", GROUP="input", MODE="0660"
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", TAG+="uaccess"
       KERNEL=="hidraw*", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", TAG+="uaccess"
-      '';
-      destination = "/etc/udev/rules.d/50-uhk60.rules";
+    '';
+    destination = "/etc/udev/rules.d/50-uhk60.rules";
   };
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t440p>
       ./hardware-configuration.nix
       ./suspend.nix
@@ -66,9 +67,23 @@ in
     earlySetup = true;
     packages = [ pkgs.terminus_font ];
     font = "ter-122n";
-    colors = [ 
-      "282828" "cc241d" "98971a" "d79921" "458588" "b16286" "689d6a" "a89984"
-      "928374" "fb4934" "b8bb26" "fabd2f" "83a598" "d3869b" "8ec07c" "ebdbb2"
+    colors = [
+      "282828"
+      "cc241d"
+      "98971a"
+      "d79921"
+      "458588"
+      "b16286"
+      "689d6a"
+      "a89984"
+      "928374"
+      "fb4934"
+      "b8bb26"
+      "fabd2f"
+      "83a598"
+      "d3869b"
+      "8ec07c"
+      "ebdbb2"
     ];
   };
 
@@ -105,7 +120,25 @@ in
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
-    alsaUtils coreutils dbus dmidecode dropbox-cli git killall lshw libnotify lsof man pavucontrol pciutils pulseaudio qemu_kvm vim virtmanager wget zsh
+    alsaUtils
+    coreutils
+    dbus
+    dmidecode
+    dropbox-cli
+    git
+    killall
+    lshw
+    libnotify
+    lsof
+    man
+    pavucontrol
+    pciutils
+    pulseaudio
+    qemu_kvm
+    vim
+    virtmanager
+    wget
+    zsh
     (
       pkgs.writeTextFile {
         name = "startsway";
@@ -118,7 +151,7 @@ in
           systemctl --user import-environment
           # then start the service
           exec systemctl --user start sway.service
-          '';
+        '';
       }
     )
   ];
@@ -147,11 +180,11 @@ in
   systemd.user.services.keybase-gui = {
     description = "Keybase GUI";
     requires = [ "keybase.service" "kbfs.service" ];
-    after    = [ "keybase.service" "kbfs.service" ];
+    after = [ "keybase.service" "kbfs.service" ];
     serviceConfig = {
-      ExecStart  = "${pkgs.keybase-gui}/share/keybase/Keybase";
+      ExecStart = "${pkgs.keybase-gui}/share/keybase/Keybase";
       PrivateTmp = true;
-      Slice      = "keybase.slice";
+      Slice = "keybase.slice";
     };
   };
 
@@ -175,7 +208,10 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [
-    canon-cups-ufr2 cnijfilter2 cups-bjnp gutenprint
+    canon-cups-ufr2
+    cnijfilter2
+    cups-bjnp
+    gutenprint
   ];
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
@@ -193,6 +229,12 @@ in
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+
+  services.memcached = {
+    enable = true;
+    port = 11211;
+    listen = "127.0.0.1";
   };
 
   # Other hardware
@@ -282,7 +324,7 @@ in
     };
   };
 
-  services.geoclue2.enable= true;
+  services.geoclue2.enable = true;
   location.provider = "geoclue2";
 
   services.redshift = {
