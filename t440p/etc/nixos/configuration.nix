@@ -290,7 +290,7 @@ in
   # https://nixos.wiki/wiki/Dropbox
   systemd.user.services.dropbox = {
     description = "Dropbox";
-    wantedBy = [ "graphical-session.target" ];
+    wantedBy = [ "multi-user.target" ];
     environment = {
       QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
       QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
