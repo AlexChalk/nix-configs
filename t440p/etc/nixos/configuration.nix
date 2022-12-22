@@ -190,32 +190,6 @@ in
     XCURSOR_SIZE = "32";
   };
 
-  services.kbfs = {
-    enable = true;
-    mountPoint = "%t/kbfs";
-    extraFlags = [ "-label %u" ];
-  };
-
-  systemd.user.services.keybase = {
-    serviceConfig.Slice = "keybase.slice";
-  };
-
-  systemd.user.services.kbfs = {
-    environment = { KEYBASE_RUN_MODE = "prod"; };
-    serviceConfig.Slice = "keybase.slice";
-  };
-
-  systemd.user.services.keybase-gui = {
-    description = "Keybase GUI";
-    requires = [ "keybase.service" "kbfs.service" ];
-    after = [ "keybase.service" "kbfs.service" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.keybase-gui}/share/keybase/Keybase";
-      PrivateTmp = true;
-      Slice = "keybase.slice";
-    };
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   #
@@ -290,7 +264,7 @@ in
   # https://nixos.wiki/wiki/Dropbox
   systemd.user.services.dropbox = {
     description = "Dropbox";
-    wantedBy = [ "graphical-session.target" ];
+    wantedBy = [ "default.target" ];
     environment = {
       QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
       QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
@@ -340,34 +314,6 @@ in
     ];
   };
 
-  systemd.user.targets.sway-session = {
-    description = "Sway compositor session";
-    documentation = [ "man:systemd.special(7)" ];
-    bindsTo = [ "graphical-session.target" ];
-    wants = [ "graphical-session-pre.target" ];
-    after = [ "graphical-session-pre.target" ];
-  };
-
-  systemd.user.services.sway = {
-    description = "Sway - Wayland window manager";
-    documentation = [ "man:sway(5)" ];
-    bindsTo = [ "graphical-session.target" ];
-    wants = [ "graphical-session-pre.target" ];
-    after = [ "graphical-session-pre.target" ];
-    # We explicitly unset PATH here, as we want it to be set by
-    # systemctl --user import-environment in startsway
-    environment.PATH = lib.mkForce null;
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = ''
-        ${pkgs.dbus}/bin/dbus-run-session ${pkgs.sway}/bin/sway --debug
-      '';
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
-
   services.geoclue2.enable = true;
   location.provider = "geoclue2";
 
@@ -376,6 +322,14 @@ in
     package = pkgs.gammastep;
     temperature.day = 5000;
     temperature.night = 1900;
+  };
+
+  systemd.user.targets.sway-session = {
+    description = "Sway compositor session";
+    documentation = [ "man:systemd.special(7)" ];
+    bindsTo = [ "graphical-session.target" ];
+    wants = [ "graphical-session-pre.target" ];
+    after = [ "graphical-session-pre.target" ];
   };
 
   systemd.user.services.kanshi = {
