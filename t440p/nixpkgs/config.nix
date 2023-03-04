@@ -59,6 +59,7 @@
           leiningen
           lua5_1
           maven
+          (import <nixos-unstable> { }).metasploit
           mono
           mpv # media player
           mtools # read ms-dos disks
@@ -73,6 +74,7 @@
           pandoc
           parted
           python3
+          python3Packages.pipx
           rename
           ripgrep
           ruby

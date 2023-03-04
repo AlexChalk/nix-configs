@@ -135,6 +135,11 @@ in
 
   services.trezord.enable = true;
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   services.gnome = {
     gnome-keyring.enable = mkForce false;
     core-os-services.enable = mkForce false;
