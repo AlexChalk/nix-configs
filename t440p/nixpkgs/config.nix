@@ -88,6 +88,7 @@
           texlive.combined.scheme-full
           tmux
           tree
+          (import <nixos-unstable> { }).uhk-agent
           universal-ctags
           unzip
           viewnior
