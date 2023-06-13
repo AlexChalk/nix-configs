@@ -78,7 +78,7 @@
           rename
           ripgrep
           ruby
-          rustup
+          rustup # includes rust-analyzer
           signal-desktop
           slurp
           (import <nixos-unstable> { }).sqlfluff
@@ -123,7 +123,6 @@
           sumneko-lua-language-server
           terraform-ls
           rubyPackages.solargraph
-          rust-analyzer
           shellcheck
           (import <nixos-unstable> { }).stylua
           texlab

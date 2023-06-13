@@ -186,7 +186,6 @@ in
     vim
     virtmanager
     wget
-    zsh
   ];
 
   environment.variables = {
@@ -318,6 +317,8 @@ in
       kanshi # autorandr
     ];
   };
+
+  programs.zsh.enable = true;
 
   services.geoclue2.enable = true;
   location.provider = "geoclue2";
