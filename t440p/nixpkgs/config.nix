@@ -51,6 +51,7 @@
           hledger
           htop
           imagemagick
+          inetutils
           insomnia
           joker
           jq
@@ -94,7 +95,6 @@
           viewnior
           wf-recorder
           wget
-          whois
           wine
           winetricks
           wl-clipboard
