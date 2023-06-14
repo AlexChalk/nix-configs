@@ -3,13 +3,14 @@
   packageOverrides = pkgs: with pkgs; {
     adcPackages =
       let
-        nixops' = (import <nixos-unstable> { }).nixopsUnstable;
+        unstable = import <nixos-unstable> { };
+        nixops' = unstable.nixopsUnstable;
       in
       pkgs.buildEnv {
         name = "adc-packages";
         paths = [
           _1password
-          (import <nixos-unstable> { })._1password-gui
+          unstable._1password-gui
           acpi
           appimage-run
           anki
@@ -24,11 +25,11 @@
           castget # rss enclosure downloader
           circleci-cli
           clj-kondo
-          (import <nixos-unstable> { }).clojure
+          unstable.clojure
           curl
           dotnet-sdk
           dotnetPackages.Nuget
-          (import <nixos-unstable> { }).dropbox-cli
+          unstable.dropbox-cli
           elmPackages.elm
           elmPackages.elm-format
           elmPackages.elm-json
@@ -60,7 +61,7 @@
           leiningen
           lua5_1
           maven
-          (import <nixos-unstable> { }).metasploit
+          unstable.metasploit
           mono
           mpv # media player
           mtools # read ms-dos disks
@@ -82,14 +83,14 @@
           rustup # includes rust-analyzer
           signal-desktop
           slurp
-          (import <nixos-unstable> { }).sqlfluff
-          (import <nixos-unstable> { }).nodePackages.sql-formatter
+          unstable.sqlfluff
+          unstable.nodePackages.sql-formatter
           stack
           terraform
           texlive.combined.scheme-full
           tmux
           tree
-          (import <nixos-unstable> { }).uhk-agent
+          unstable.uhk-agent
           universal-ctags
           unzip
           viewnior
@@ -105,13 +106,13 @@
           teams
           zstd # compression algorithm
           # Neovim
-          (callPackage (import ../../packages/neovim.nix) { pkgs = import <nixos-unstable> { }; })
+          (callPackage (import ../../packages/neovim.nix) { pkgs = unstable; })
           # Language servers/formatters for neovim
           clang-tools
-          (import <nixos-unstable> { }).clojure-lsp
+          unstable.clojure-lsp
           elmPackages.elm-language-server
           gopls
-          (import <nixos-unstable> { }).haskell-language-server
+          unstable.haskell-language-server
           nodePackages.bash-language-server
           nodePackages.dockerfile-language-server-nodejs
           nodePackages.pyright
@@ -124,7 +125,7 @@
           terraform-ls
           rubyPackages.solargraph
           shellcheck
-          (import <nixos-unstable> { }).stylua
+          unstable.stylua
           texlab
           # linters/diagnostics/formatters
           nodePackages.eslint
