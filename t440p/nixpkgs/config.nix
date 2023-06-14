@@ -4,6 +4,7 @@
     adcPackages =
       let
         unstable = import <nixos-unstable> { };
+        stable = import <nixos> { };
         nixops' = unstable.nixopsUnstable;
       in
       pkgs.buildEnv {
@@ -106,7 +107,7 @@
           teams
           zstd # compression algorithm
           # Neovim
-          (callPackage (import ../../packages/neovim.nix) { pkgs = unstable; })
+          (callPackage (import ../../packages/neovim.nix) { pkgs = stable; })
           # Language servers/formatters for neovim
           clang-tools
           unstable.clojure-lsp
