@@ -30,7 +30,6 @@
           curl
           dotnet-sdk
           dotnetPackages.Nuget
-          unstable.dropbox-cli
           elmPackages.elm
           elmPackages.elm-format
           elmPackages.elm-json
