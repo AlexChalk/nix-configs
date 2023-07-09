@@ -6,7 +6,9 @@
 
 let
   mkForce = lib.mkForce;
-  unstable = import <nixos-unstable> { };
+  unstable = import <nixos-unstable> {
+    config = config.nixpkgs.config;
+  };
 
   # Ultimate Hacking Keyboard rules
   # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
@@ -274,7 +276,7 @@ in
       QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
     };
     serviceConfig = {
-      ExecStart = "${lib.getBin pkgs.dropbox}/bin/dropbox";
+      ExecStart = "${lib.getBin unstable.dropbox}/bin/dropbox";
       ExecReload = "${lib.getBin pkgs.coreutils}/bin/kill -HUP $MAINPID";
       KillMode = "control-group";
       Restart = "on-failure";
