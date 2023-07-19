@@ -76,6 +76,7 @@
           pandoc
           parted
           poetry
+          pomodoro
           python3Full
           python3Packages.pipx
           rename
