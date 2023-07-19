@@ -245,6 +245,9 @@ in
     listen = "127.0.0.1";
   };
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Other hardware
   hardware = {
     enableAllFirmware = true;
