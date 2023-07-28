@@ -3,9 +3,9 @@ let
   gemoji = pkgs.buildRubyGem {
     pname = "gemoji";
     gemName = "gemoji";
-    source.sha256 = "1xv38sxql1fmaxi5lzj6v98l2aqhi6bqkhi6kqd0k38vw40l3yqc";
+    source.sha256 = "sha256-c0Q0Agy+lk6p0ZCGeYeXpH0joXCJLeDOVbdKpl0t3Bo=";
     type = "gem";
-    version = "4.0.0.rc2";
+    version = "4.1.0";
   };
   emoji_list = stdenv.mkDerivation {
     name = "emoji_list";
