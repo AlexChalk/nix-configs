@@ -81,6 +81,7 @@ in
 
   networking.hostName = "adc-nixos"; # Define your hostname.
   networking.networkmanager.enable = true; # Enables wireless support via networkmanager.
+  programs.nm-applet.enable = false; # nm-applet (enable to connect to WPA2-Enterprise networks for the first time)
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
