@@ -79,6 +79,8 @@
           pomodoro
           python3Full
           python3Packages.pipx
+          quickemu
+          socat
           rename
           ripgrep
           ruby
