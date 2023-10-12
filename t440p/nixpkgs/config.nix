@@ -107,7 +107,6 @@
           yarn # use yarn instead of npm for global installs
           zathura
           zoom-us
-          teams
           zstd # compression algorithm
           # Neovim
           (callPackage (import ../../packages/neovim.nix) { pkgs = stable; })
