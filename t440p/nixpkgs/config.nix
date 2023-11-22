@@ -10,8 +10,6 @@
       pkgs.buildEnv {
         name = "adc-packages";
         paths = [
-          _1password
-          unstable._1password-gui
           acpi
           appimage-run
           anki
