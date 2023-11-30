@@ -94,7 +94,7 @@ in
 
   services.udev.packages = [ uhkUdevRules ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     font-awesome
   ];
 
@@ -185,7 +185,7 @@ in
     dbus-sway-environment
     configure-gtk
     vim
-    virtmanager
+    virt-manager
     wget
   ];
 
@@ -278,7 +278,7 @@ in
       QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
     };
     serviceConfig = {
-      ExecStart = "${lib.getBin unstable.dropbox}/bin/dropbox";
+      ExecStart = "${lib.getBin pkgs.dropbox}/bin/dropbox";
       ExecReload = "${lib.getBin pkgs.coreutils}/bin/kill -HUP $MAINPID";
       KillMode = "control-group";
       Restart = "on-failure";
