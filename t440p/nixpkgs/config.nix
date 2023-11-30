@@ -83,7 +83,7 @@
           ripgrep
           ruby
           rustup # includes rust-analyzer
-          signal-desktop
+          signal-desktop-beta
           slurp
           unstable.sqlfluff
           unstable.nodePackages.sql-formatter
