@@ -90,7 +90,11 @@ in
 
   # Check locally hosted dev server from phone
   # (ssh port is 22 for future setup)
-  networking.firewall.allowedTCPPorts = [ 3000 ];
+  # 17500 is dropbox
+  networking.firewall = {
+    allowedTCPPorts = [ 3000 17500 ];
+    allowedUDPPorts = [ 17500 ];
+  };
 
   services.udev.packages = [ uhkUdevRules ];
 
