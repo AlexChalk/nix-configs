@@ -18,7 +18,7 @@
           bashmount
           beets
           binutils
-          unstable.bitwarden
+          bitwarden
           bitwarden-cli
           bundix
           castget # rss enclosure downloader
