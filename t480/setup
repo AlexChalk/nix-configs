@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# 1. Follow https://nixos.org/manual/nixos/stable/#ch-installation
+# 2. Paste in configs from nix-configs to initially build system (remove build complicators like `unstable.X` initially).
+
+cd $HOME
+
+# ln Bash
+sudo ln -s $(which bash) /bin/bash
+
+# Channel setup
+sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware 
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable 
+sudo nix-channel --update
+nix-channel --add https://nixos.org/channels/nixos-23.11 nixos
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable 
+nix-channel --update
+
+# Backup
+sudo cp /etc/nixos/configuration.nix $HOME/nix-configs/new-machine/etc/nixos/configuration.nix
+sudo cp /etc/nixos/hardware-configuration.nix $HOME/nix-configs/new-machine/etc/nixos/hardware-configuration.nix
+sudo mv /etc/nixos/configuration.nix /etc/nixos/old.configuration.nix
+sudo mv /etc/nixos/hardware-configuration.nix /etc/nixos/old.configuration.nix
+# Tweak config, then
+sudo ln -s $HOME/nix-configs/new-machine/etc/nixos/configuration.nix /etc/nixos/configuration.nix
+
+mkdir -p $HOME/.config/nixpkgs
+ln -s $HOME/nix-configs/t440p/nixpkgs/config.nix $HOME/.config/nixpkgs
+
+# Ssh
+# ssh-keygen -t ed25519 -C "contact@alexchalk.net"
+# eval "$(ssh-agent -s)"
+# ssh-add $HOME/.ssh/id_ed25519
+
+# Add lion-images directory
+
+# Fonts
+git clone git@github.com:AlexChalk/fonts-private.git $HOME/.local/share/fonts
+
+# Swaynagmode
+git clone git@github.com:b0o/swaynagmode.git
+mkdir bin-personal &> /dev/null
+ln -s $HOME/swaynagmode/swaynagmode $HOME/bin-personal/swaynagmode
+
+# Vim Plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Firefox:
+#
+# Plugins
+# - Redirector:fastmail
+# - Bitwarden: Ctrl+Period, Ctrl+Alt+Y, Ctrl+Alt+L, Ctrl+Alt+9
+# - Tab session manager: Disable all autosave
+# - Ublock: Preferences -> My Filters:
+#   ```
+#   @@||local.adguard.com/$third-party,script
+#   ||accounts.google.com/gsi/iframe/select*$third-party
+#   ```
+#
+# Other
+# - Allow addons to run in private windows
+# - Privacy and Security -> Cookies and site data -> manage exceptions:
+#     https://www.paypal.com/ -> Allow for session
+#     Check for others
+# - More Tools -> Customize Toolbar
+#   n.b. Customize Toolbar -> Titlebar bottom left
+# - about:config 
+#   layout.css.devPixelsPerPx 1.1
+# - Control+shift+i for devtools:
+#   Three dots -> Dock to Right
+
