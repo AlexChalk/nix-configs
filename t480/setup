@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # 1. Follow https://nixos.org/manual/nixos/stable/#ch-installation
+#    check nix.wiki for partition alignment.
 # 2. Paste in configs from nix-configs to initially build system (remove build complicators like `unstable.X` initially).
 
 cd $HOME
