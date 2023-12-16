@@ -193,6 +193,19 @@ in
     XCURSOR_SIZE = "32";
   };
 
+  # Power saving
+  # https://nixos.wiki/wiki/Laptop
+  # https://wiki.archlinux.org/title/TLP
+  services.thermald.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      USB_AUTOSUSPEND = 0;
+      # TLP_DEFAULT_MODE = "BAT";
+      # TLP_PERSISTENT_DEFAULT = 1;
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   #
