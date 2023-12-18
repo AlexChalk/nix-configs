@@ -196,7 +196,7 @@ in
   # Power saving
   # https://nixos.wiki/wiki/Laptop
   # https://wiki.archlinux.org/title/TLP
-  services.thermald.enable = true;
+  services.thermald.enable = false;
   services.tlp = {
     enable = true;
     settings = {
