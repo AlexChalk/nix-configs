@@ -52,6 +52,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # Plugins
 # - Redirector:fastmail
 # - Bitwarden: Ctrl+Period, Ctrl+Alt+Y, Ctrl+Alt+L, Ctrl+Alt+9
+# - Bitwarden: Vault timeout
 # - Tab session manager: Disable all autosave
 # - Ublock: Preferences -> My Filters:
 #   ```
