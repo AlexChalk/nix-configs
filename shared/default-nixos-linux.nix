@@ -130,7 +130,7 @@ in
 
   services.mullvad-vpn = {
     enable = true;
-    package = unstable.mullvad-vpn;
+    package = pkgs.mullvad-vpn;
   };
 
   services.gnome = {
