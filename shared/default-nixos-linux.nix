@@ -126,12 +126,6 @@ in
     ];
   };
 
-  services.batteryNotifier = {
-    enable = true;
-    notifyCapacity = 10;
-    suspendCapacity = 7;
-  };
-
   services.trezord.enable = true;
 
   services.mullvad-vpn = {

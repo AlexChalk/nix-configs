@@ -11,13 +11,19 @@
   # system.copySystemConfiguration = true;
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <nixos-hardware/lenovo/thinkpad/t480>
       ../../../shared/default-nixos-linux.nix
     ];
 
-  services.batteryNotifier.device = "BAT1";
+  services.batteryNotifier = {
+    enable = true;
+    device = "BAT1";
+    notifyCapacity = 15;
+    suspendCapacity = 7;
+  };
 
   # Only update this if you do a completely fresh install.
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .

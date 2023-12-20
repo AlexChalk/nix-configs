@@ -11,11 +11,19 @@
   # system.copySystemConfiguration = true;
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <nixos-hardware/lenovo/thinkpad/t440p>
       ../../../shared/default-nixos-linux.nix
     ];
+
+  services.batteryNotifier = {
+    enable = true;
+    device = "BAT0";
+    notifyCapacity = 10;
+    suspendCapacity = 7;
+  };
 
   # Only update this if you do a completely fresh install.
   # https://nixos.org/nixos/options.html#system.stateversion
