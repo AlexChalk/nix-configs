@@ -72,3 +72,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # - Control+shift+i for devtools:
 #   Three dots -> Dock to Right
 # - Disable/reenable DRM
+# - Default zoom
