@@ -2,7 +2,7 @@
 
 let
   unstable = import <nixos-unstable> { };
-  stable = import <nixos> { };
+  stable = import <nixos-stable> { };
   nixops' = unstable.nixopsUnstable;
 in
 pkgs.buildEnv {
@@ -81,7 +81,7 @@ pkgs.buildEnv {
     ripgrep
     ruby
     rustup # includes rust-analyzer
-    signal-desktop-beta
+    unstable.signal-desktop-beta
     slurp
     unstable.sqlfluff
     unstable.nodePackages.sql-formatter
