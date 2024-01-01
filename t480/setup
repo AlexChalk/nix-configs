@@ -12,9 +12,12 @@ sudo ln -s $(which bash) /bin/bash
 # Channel setup
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware 
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable 
+sudo nix-channel --add https://nixos.org/channels/nixos-23.11 nixos-stable
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 sudo nix-channel --update
-nix-channel --add https://nixos.org/channels/nixos-23.11 nixos
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable 
+nix-channel --add https://nixos.org/channels/nixos-23.11 nixos-stable
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 nix-channel --update
 
 # Backup
