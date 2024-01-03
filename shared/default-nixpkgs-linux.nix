@@ -62,6 +62,7 @@ pkgs.buildEnv {
     mpv # media player
     mtools # read ms-dos disks
     neofetch
+    nethogs
     netlify-cli
     ngrok
     nix-index
