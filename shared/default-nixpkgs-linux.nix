@@ -69,7 +69,8 @@ pkgs.buildEnv {
     # nixops'
     nodejs
     octave
-    jdk11
+    # jdk11 (fix)
+    jdk17
     pandoc
     parted
     poetry
@@ -113,6 +114,7 @@ pkgs.buildEnv {
     elmPackages.elm-language-server
     gopls
     unstable.haskell-language-server
+    jdt-language-server
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.pyright
