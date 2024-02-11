@@ -88,8 +88,8 @@ pkgs.buildEnv {
     unstable.sqlfluff
     unstable.nodePackages.sql-formatter
     stack
+    tectonic
     terraform
-    texlive.combined.scheme-full
     tmux
     tree
     unstable.uhk-agent
