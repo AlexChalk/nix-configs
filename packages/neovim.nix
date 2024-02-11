@@ -1,11 +1,14 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
 with pkgs; neovim.override {
   configure = {
-    customRC = "execute 'source $HOME/.config/nvim/init.lua'";
+    customRC = ''
+      let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'
+      execute 'source $HOME/.config/nvim/init.lua'
+    '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       start = [ fzf-vim fzfWrapper ];
       opt = [ ];
-    }; 
+    };
   };
 }

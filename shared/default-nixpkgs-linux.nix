@@ -72,6 +72,7 @@ pkgs.buildEnv {
     # jdk11 (fix)
     jdk17
     pandoc
+    papis
     parted
     poetry
     pomodoro
@@ -86,6 +87,7 @@ pkgs.buildEnv {
     unstable.signal-desktop-beta
     slurp
     unstable.sqlfluff
+    sqlite
     unstable.nodePackages.sql-formatter
     stack
     tectonic
@@ -103,6 +105,7 @@ pkgs.buildEnv {
     wl-clipboard
     xorg.xkbcomp
     yarn # use yarn instead of npm for global installs
+    yq-go
     zathura
     zoom-us
     zstd # compression algorithm
