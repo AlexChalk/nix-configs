@@ -6,6 +6,10 @@ let
     config = config.nixpkgs.config;
   };
 
+  stable = import <nixos-stable> {
+    config = config.nixpkgs.config;
+  };
+
   # Ultimate Hacking Keyboard rules
   # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
   uhkUdevRules = pkgs.writeTextFile {
@@ -200,6 +204,13 @@ in
     };
   };
 
+  # powerManagement.powerDownCommands = ''
+  #   echo enabled > /sys/bus/usb/devices/usb1/power/wakeup
+  #   echo enabled > /sys/bus/usb/devices/usb2/power/wakeup
+  #   echo enabled > /sys/bus/usb/devices/usb3/power/wakeup
+  #   echo enabled > /sys/bus/usb/devices/usb4/power/wakeup
+  # '';
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   #
@@ -216,6 +227,12 @@ in
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

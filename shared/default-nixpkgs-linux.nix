@@ -87,20 +87,20 @@ pkgs.buildEnv {
     unstable.signal-desktop-beta
     slurp
     unstable.sqlfluff
-    sqlite
     unstable.nodePackages.sql-formatter
     stack
     tectonic
+    texlive.combined.scheme-full
     terraform
     tmux
     tree
-    unstable.uhk-agent
+    stable.uhk-agent
     universal-ctags
     unzip
     viewnior
     wf-recorder
     wget
-    wine
+    wineWowPackages.waylandFull
     winetricks
     wl-clipboard
     xorg.xkbcomp
@@ -108,6 +108,7 @@ pkgs.buildEnv {
     yq-go
     zathura
     zoom-us
+    zotero
     zstd # compression algorithm
     # Neovim
     (callPackage (import ../packages/neovim.nix) { pkgs = stable; })
