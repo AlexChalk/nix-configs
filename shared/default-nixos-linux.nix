@@ -150,7 +150,7 @@ in
 
   # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left
   # Alt, Right Alt as compose key (e.g. for accents)
-  services.xserver.xkbOptions = "ctrl:nocaps,altwin:swap_lalt_lwin,compose:ralt";
+  services.xserver.xkb.options = "ctrl:nocaps,altwin:swap_lalt_lwin,compose:ralt";
   console.useXkbConfig = true;
 
   # Set your time zone.
@@ -226,7 +226,8 @@ in
     gutenprint
   ];
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
+  services.avahi.nssmdns6 = true;
 
   # Enable sound.
   # sound.enable = true;
