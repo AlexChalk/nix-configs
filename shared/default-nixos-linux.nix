@@ -134,7 +134,7 @@ in
   };
 
   services.gnome = {
-    gnome-keyring.enable = mkForce false;
+    gnome-keyring.enable = true;
     core-os-services.enable = mkForce false;
     core-utilities.enable = mkForce false;
     games.enable = mkForce false;
