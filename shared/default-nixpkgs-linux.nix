@@ -76,6 +76,7 @@ pkgs.buildEnv {
     parted
     poetry
     pomodoro
+    poppler_utils
     python3Full
     python3Packages.pipx
     quickemu
