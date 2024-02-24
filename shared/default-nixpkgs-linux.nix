@@ -4,6 +4,7 @@ let
   unstable = import <nixos-unstable> { };
   stable = import <nixos-stable> { };
   nixops' = unstable.nixopsUnstable;
+  python = unstable.python3Full.withPackages (ps: with ps; [ /* debugpy */ ]);
 in
 pkgs.buildEnv {
   name = "adc-packages";
@@ -77,7 +78,7 @@ pkgs.buildEnv {
     poetry
     pomodoro
     poppler_utils
-    python3Full
+    python
     python3Packages.pipx
     quickemu
     socat
