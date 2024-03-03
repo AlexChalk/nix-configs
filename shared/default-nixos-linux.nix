@@ -191,6 +191,12 @@ in
     XCURSOR_SIZE = "32";
   };
 
+  services.batteryNotifier = {
+    enable = true;
+    notifyCapacity = 30;
+    suspendCapacity = 14;
+  };
+
   # Power saving
   # https://nixos.wiki/wiki/Laptop
   # https://wiki.archlinux.org/title/TLP

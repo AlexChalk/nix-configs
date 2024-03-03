@@ -18,13 +18,6 @@
       ../../../shared/default-nixos-linux.nix
     ];
 
-  services.batteryNotifier = {
-    enable = true;
-    device = "BAT1";
-    notifyCapacity = 15;
-    suspendCapacity = 7;
-  };
-
   # Only update this if you do a completely fresh install.
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?

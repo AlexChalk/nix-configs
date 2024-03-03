@@ -18,13 +18,6 @@
       ../../../shared/default-nixos-linux.nix
     ];
 
-  services.batteryNotifier = {
-    enable = true;
-    device = "BAT0";
-    notifyCapacity = 10;
-    suspendCapacity = 7;
-  };
-
   # Only update this if you do a completely fresh install.
   # https://nixos.org/nixos/options.html#system.stateversion
   system.stateVersion = "21.05";
