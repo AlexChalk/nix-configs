@@ -368,7 +368,7 @@ in
   location.provider = "geoclue2";
 
   services.redshift = {
-    enable = true;
+    enable = false;
     package = pkgs.gammastep;
     executable = "/bin/gammastep";
     temperature.day = 5000;
