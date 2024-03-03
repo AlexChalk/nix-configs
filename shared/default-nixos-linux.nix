@@ -363,11 +363,30 @@ in
   programs.zsh.enable = true;
 
   services.geoclue2.enable = true;
+  # https://github.com/NixOS/nixpkgs/issues/68489#issuecomment-1484030107
+  services.geoclue2.enableDemoAgent = lib.mkForce true;
   location.provider = "geoclue2";
+
+  # systemd.user.services.gammastep = {
+  #   description = "Control display color temperature";
+  #   partOf = [ "graphical-session.target" ];
+  #   wantedBy = [ "graphical-session.target" ];
+  #   wants = [ "geoclue-agent.service" ];
+  #   after = [ "graphical-session-pre.target" "geoclue-agent.service" ];
+  #   serviceConfig = {
+  #     Restart = "on-failure";
+  #     RestartSec = 5;
+  #     ExecStart = ''
+  #       ${pkgs.gammastep}/bin/gammastep -l geoclue2 -t 5000:1900
+  #     '';
+  #   };
+  # };
+
 
   services.redshift = {
     enable = true;
     package = pkgs.gammastep;
+    executable = "/bin/gammastep";
     temperature.day = 5000;
     temperature.night = 1900;
   };
