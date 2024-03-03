@@ -69,7 +69,9 @@ pkgs.buildEnv {
     nix-index
     # nixops'
     nodejs
+    nss.tools
     octave
+    libsForQt5.okular
     # jdk11 (fix)
     jdk17
     pandoc
@@ -105,6 +107,7 @@ pkgs.buildEnv {
     wineWowPackages.waylandFull
     winetricks
     wl-clipboard
+    xca
     xorg.xkbcomp
     yarn # use yarn instead of npm for global installs
     yq-go
