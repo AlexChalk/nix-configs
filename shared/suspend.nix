@@ -29,26 +29,38 @@ let
       ${pkgs.coreutils}/bin/echo "$result"
     }
 
+    battery_is_low() {
+      if [[ $(capacity) -le ${builtins.toString cfg.notifyCapacity} && $(status) == "Discharging" ]]; then
+        return 0
+      else
+        return 1
+      fi
+    }
+
+    battery_is_critical() {
+      if [[ $(capacity) -le ${builtins.toString cfg.suspendCapacity} && $(status) == "Discharging" ]]; then
+        return 0
+      else
+        return 1
+      fi
+    }
+
     notify() {
       ${pkgs.libnotify}/bin/notify-send --urgency=critical --expire-time=20000 --hint=int:transient:1 --icon=battery_empty "$1" "$2"
     }
 
-    battery_capacity=$(capacity)
-    battery_status=$(status)
+    if battery_is_critical; then
+      notify "Battery Critically Low" "Computer will suspend in 2 minutes."
 
-    if [[ $battery_capacity -le ${builtins.toString cfg.suspendCapacity} && $battery_status == "Discharging" ]]; then
-        notify "Battery Critically Low" "Computer will suspend in 2 minutes."
+      sleep 120s
 
-        sleep 120s
-
-        battery_status=$(status)
-        if [[ $(status) = "Discharging" ]]; then
-            systemctl suspend
-        fi
+      if battery_is_critical; then
+        systemctl suspend
+      fi
     fi
 
-    if [[ $battery_capacity -le ${builtins.toString cfg.notifyCapacity} && $battery_status == "Discharging" ]]; then
-        notify "Battery Low" "You should probably plug-in."
+    if battery_is_low; then
+      notify "Battery Low" "You should plug in soon."
     fi
   '';
 in
