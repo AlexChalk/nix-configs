@@ -9,6 +9,8 @@ in
 pkgs.buildEnv {
   name = "adc-packages";
   paths = with pkgs; [
+    calcurse
+    libsecret
     acpi
     appimage-run
     anki

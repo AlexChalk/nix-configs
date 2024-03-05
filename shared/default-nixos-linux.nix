@@ -66,6 +66,7 @@ in
   imports =
     [
       ./suspend.nix
+      ./calendar-sync.nix
       ./sane-extra-config.nix
     ];
 
@@ -192,6 +193,8 @@ in
     XDG_CURRENT_DESKTOP = "Unity";
     XCURSOR_SIZE = "32";
   };
+
+  services.calendarSync.enable = true;
 
   services.batteryNotifier = {
     enable = true;
