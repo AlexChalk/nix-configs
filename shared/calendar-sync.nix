@@ -27,9 +27,18 @@ in
 
     systemd.user.services.calcurse-caldav = {
       description = "Import calendar";
-      path = [ pkgs.libsecret pkgs.calcurse ];
+      path = [ pkgs.curl pkgs.libsecret pkgs.calcurse ];
       unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
-      script = "calcurse-caldav --init=keep-remote";
+      script = ''
+        curl --head --silent --expect100-timeout 1 --connect-timeout 1 duckduckgo.com >/dev/null 2>&1 || retping=$?
+
+        if [[ -n "$retping" ]]; then
+          echo "No connection for sync."
+          exit 1
+        fi
+
+        calcurse-caldav --init=keep-remote;
+      '';
       serviceConfig = {
         Type = "oneshot";
       };
