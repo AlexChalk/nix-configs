@@ -11,5 +11,5 @@ with pkgs; neovim.override {
       opt = [ ];
     };
   };
-  extraPython3Packages = ps: with ps; [ pyyaml ];
+  extraPython3Packages = ps: with ps; [ debugpy pyyaml ];
 }

@@ -4,7 +4,7 @@ let
   unstable = import <nixos-unstable> { };
   stable = import <nixos-stable> { };
   nixops' = unstable.nixopsUnstable;
-  python = unstable.python3Full.withPackages (ps: with ps; [ /* debugpy */ ]);
+  python' = pkgs.python3Full.withPackages (ps: with ps; [ debugpy ]);
 in
 pkgs.buildEnv {
   name = "adc-packages";
@@ -82,7 +82,7 @@ pkgs.buildEnv {
     poetry
     pomodoro
     poppler_utils
-    python
+    python'
     python3Packages.pipx
     quickemu
     socat
@@ -144,10 +144,10 @@ pkgs.buildEnv {
     nodePackages.eslint
     python3Packages.flake8
     python3Packages.reorder-python-imports
-    pgformatter
-    shfmt
     black
+    isort
     mypy
+    pgformatter
     shfmt
   ];
   pathsToLink = [ "/share" "/bin" ];

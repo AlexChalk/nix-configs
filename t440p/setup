@@ -28,6 +28,7 @@ sudo ln -s $HOME/nix-configs/t440p/etc/nixos/* /etc/nixos
 # Add version-controlled user config
 mkdir -p $HOME/.config/nixpkgs
 ln -s $HOME/nix-configs/t440p/nixpkgs/config.nix $HOME/.config/nixpkgs
+ln -s $HOME/nix-configs/t440p/nixpkgs/overlays.nix $HOME/.config/nixpkgs
 
 # Ssh
 # ssh-keygen -t ed25519 -C "contact@alexchalk.net"
