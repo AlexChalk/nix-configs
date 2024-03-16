@@ -92,9 +92,8 @@ pkgs.buildEnv {
     rustup # includes rust-analyzer
     unstable.signal-desktop-beta
     slurp
-    unstable.sqlfluff
-    unstable.nodePackages.sql-formatter
     stack
+    stylua
     tectonic
     texliveFull
     terraform
@@ -118,37 +117,7 @@ pkgs.buildEnv {
     zotero
     zstd # compression algorithm
     # Neovim
-    (callPackage (import ../packages/neovim.nix) { pkgs = stable; })
-    # Language servers/formatters for neovim
-    clang-tools
-    unstable.clojure-lsp
-    elmPackages.elm-language-server
-    gopls
-    unstable.haskell-language-server
-    jdt-language-server
-    nodePackages.bash-language-server
-    nodePackages.dockerfile-language-server-nodejs
-    nodePackages.pyright
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.vscode-json-languageserver
-    nodePackages.yaml-language-server
-    rnix-lsp
-    sumneko-lua-language-server
-    terraform-ls
-    rubyPackages.solargraph
-    shellcheck
-    unstable.stylua
-    texlab
-    # linters/diagnostics/formatters
-    nodePackages.eslint
-    python3Packages.flake8
-    python3Packages.reorder-python-imports
-    black
-    isort
-    mypy
-    pgformatter
-    shfmt
+    (callPackage (import ../packages/neovim.nix) {})
   ];
   pathsToLink = [ "/share" "/bin" ];
 }
