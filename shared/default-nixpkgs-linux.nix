@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
+# See https://nixos.org/manual/nixpkgs/stable/#sec-building-environment
 let
   unstable = import <nixos-unstable> { };
   stable = import <nixos-stable> { };
@@ -117,7 +118,7 @@ pkgs.buildEnv {
     zotero
     zstd # compression algorithm
     # Neovim
-    (callPackage (import ../packages/neovim.nix) {})
+    (callPackage (import ../packages/neovim.nix) { })
   ];
   pathsToLink = [ "/share" "/bin" ];
 }
