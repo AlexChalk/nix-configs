@@ -202,6 +202,28 @@ in
     suspendCapacity = 14;
   };
 
+  systemd.user.timers.user-update = {
+    description = "nix-env -iA";
+    timerConfig.OnCalendar = "weekly";
+    timerConfig.Unit = "user-update.service";
+    wantedBy = [ "timers.target" ];
+  };
+
+  systemd.user.services.user-update = {
+    description = "nix-env -iA";
+    script = ''
+      curl --head --silent --expect100-timeout 1 --connect-timeout 1 duckduckgo.com >/dev/null 2>&1 || retping=$?
+
+      if [[ -n "$retping" ]]; then
+        echo "No connection for update."
+        exit 1
+      fi
+
+      nix-channel --update
+      nix-env -iA nixos.adcPackages
+    '';
+  };
+
   # Power saving
   # https://nixos.wiki/wiki/Laptop
   # https://wiki.archlinux.org/title/TLP
