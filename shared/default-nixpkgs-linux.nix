@@ -3,7 +3,7 @@
 let
   unstable = import <nixos-unstable> { };
   stable = import <nixos-stable> { };
-  nixops' = unstable.nixopsUnstable;
+  nixops' = unstable.nixops_unstable_full;
   python' = pkgs.python3Full.withPackages (ps: with ps; [ debugpy ]);
 in
 pkgs.buildEnv {
@@ -96,7 +96,7 @@ pkgs.buildEnv {
     unstable.nodePackages.sql-formatter
     stack
     tectonic
-    texlive.combined.scheme-full
+    texliveFull
     terraform
     tmux
     tree
