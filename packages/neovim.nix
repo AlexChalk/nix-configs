@@ -10,6 +10,7 @@ let
     gopls
     haskell-language-server
     jdt-language-server
+    nixpkgs-fmt
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.pyright
