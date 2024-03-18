@@ -22,6 +22,24 @@ let
     destination = "/etc/udev/rules.d/50-uhk60.rules";
   };
 
+  steamControllerUdevRules = pkgs.writeTextFile {
+    name = "steam-controller-dev-rules";
+    text = ''
+      #USB devices
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
+
+      #gamepad emulation
+      KERNEL=="uinput", MODE="0666", GROUP="users", OPTIONS+="static_node=uinput"
+
+      # Valve HID devices over USB hidraw
+      KERNEL=="hidraw*", ATTRS{idVendor}=="28de", MODE="0666"
+
+      # Valve HID devices over bluetooth hidraw
+      KERNEL=="hidraw*", KERNELS=="*28DE:*", MODE="0666"
+    '';
+    destination = "/etc/udev/rules.d/99-steam-controller-permission.rules";
+  };
+
   # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
   # see
@@ -97,7 +115,7 @@ in
     allowedUDPPorts = [ 17500 ];
   };
 
-  services.udev.packages = [ uhkUdevRules ];
+  services.udev.packages = [ uhkUdevRules steamControllerUdevRules ];
 
   fonts.packages = with pkgs; [
     font-awesome
@@ -290,6 +308,8 @@ in
     enableAllFirmware = true;
     opengl.enable = true;
   };
+
+  hardware.xpadneo.enable = true;
 
   hardware.sane.enable = true;
   services.saned.enable = true;
