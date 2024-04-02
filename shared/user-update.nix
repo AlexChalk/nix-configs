@@ -25,6 +25,7 @@ in
   config = mkIf cfg.enable {
     systemd.user.timers.user-update = {
       description = "nix-env -iA";
+      timerConfig.Persistent = true;
       timerConfig.OnCalendar = cfg.frequency;
       timerConfig.Unit = "user-update.service";
       wantedBy = [ "timers.target" ];
