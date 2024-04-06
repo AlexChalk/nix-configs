@@ -210,7 +210,7 @@ in
   # https://wiki.archlinux.org/title/TLP
   services.thermald.enable = false;
   services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       USB_AUTOSUSPEND = 0;
       # TLP_DEFAULT_MODE = "BAT";
