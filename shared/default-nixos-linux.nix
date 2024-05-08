@@ -282,6 +282,11 @@ in
     listen = "127.0.0.1";
   };
 
+  services.redis.servers.local-test = {
+    enable = true;
+    port = 6379;
+  };
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
