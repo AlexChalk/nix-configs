@@ -417,8 +417,21 @@ in
     };
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.autoPrune.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+
+  virtualisation.podman = {
+    enable = true;
+    autoPrune.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
+  virtualisation.containers.registries.search = [
+    "docker.io"
+    "quay.io"
+  ];
 
   virtualisation.libvirtd = {
     enable = true;
