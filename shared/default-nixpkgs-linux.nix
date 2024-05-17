@@ -75,7 +75,6 @@ pkgs.buildEnv {
     nss.tools
     octave
     libsForQt5.okular
-    # jdk11 (fix)
     jdk17
     pandoc
     papis
