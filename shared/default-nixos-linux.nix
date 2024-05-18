@@ -419,13 +419,10 @@ in
 
   virtualisation.containers.enable = true;
 
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
-  };
-
   virtualisation.podman = {
     enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
     autoPrune.enable = true;
     defaultNetwork.settings.dns_enabled = true;
   };
@@ -448,7 +445,7 @@ in
     isNormalUser = true;
     home = "/home/adc";
     shell = pkgs.zsh;
-    extraGroups = [ "audio" "docker" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "audio" "podman" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   system.autoUpgrade.enable = true;
