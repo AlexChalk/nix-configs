@@ -73,7 +73,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.packageOverrides = pkgs: {
-    blueman = pkgs.blueman.overrideAttrs (oldAttrs: rec {
+    blueman = pkgs.blueman.overrideAttrs (oldAttrs: {
       src = pkgs.fetchurl {
         url = "https://github.com/blueman-project/blueman/releases/download/2.3.5/blueman-2.3.5.tar.xz";
         sha256 = "sha256-stIa/fd6Bs2G2vVAJAb30qU0WYF+KeC+vEkR1PDc/aE=";
