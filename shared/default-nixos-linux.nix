@@ -157,13 +157,6 @@ in
     core-shell.enable = true;
   };
 
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-    [org.gnome.desktop.interface]
-    cursor-theme='Adwaita'
-    cursor-size=24
-  '';
-
   # "ctrl:swap_lalt_lctl_lwin" Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left
   # Alt, Right Alt as compose key (e.g. for accents)
   services.xserver.xkb.options = "ctrl:nocaps,altwin:swap_lalt_lwin,compose:ralt";
@@ -198,8 +191,6 @@ in
 
   environment.variables = {
     MY_MACHINE = "nixos";
-    XDG_CURRENT_DESKTOP = "Unity";
-    XCURSOR_SIZE = "32";
   };
 
   services.calendarSync.enable = true;
