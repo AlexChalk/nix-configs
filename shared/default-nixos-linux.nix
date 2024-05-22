@@ -189,7 +189,6 @@ in
     pciutils
     pulseaudio
     qemu_kvm
-    sway
     dbus-sway-environment
     configure-gtk
     vim
