@@ -389,7 +389,7 @@ in
 
   services.redshift = {
     enable = false;
-    package = pkgs.gammastep;
+    package = unstable.gammastep;
     executable = "/bin/gammastep";
     temperature.day = 5000;
     temperature.night = 1900;
