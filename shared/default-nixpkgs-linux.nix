@@ -6,6 +6,7 @@ let
   stable = import <nixos-stable> { };
   nixops' = unstable.nixops_unstable_full;
   python' = pkgs.python3Full.withPackages (ps: with ps; [ debugpy ]);
+  clojure' = pkgs.clojure.override { jdk = pkgs.jdk17; };
 in
 pkgs.buildEnv {
   name = "adc-packages";
@@ -26,7 +27,7 @@ pkgs.buildEnv {
     castget # rss enclosure downloader
     circleci-cli
     clj-kondo
-    unstable.clojure
+    clojure'
     curl
     dotnet-sdk
     dotnetPackages.Nuget
