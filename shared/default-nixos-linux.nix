@@ -354,7 +354,6 @@ in
   # Enable the sway windowing system.
   programs.sway = {
     enable = true;
-    package = stable.sway;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       glib
