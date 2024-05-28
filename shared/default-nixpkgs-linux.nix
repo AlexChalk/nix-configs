@@ -1,9 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, stable, unstable, ... }:
 
 # See https://nixos.org/manual/nixpkgs/stable/#sec-building-environment
 let
-  unstable = import <nixos-unstable> { };
-  stable = import <nixos-stable> { };
   nixops' = unstable.nixops_unstable_full;
   python' = pkgs.python3Full.withPackages (ps: with ps; [ debugpy ]);
   clojure' = pkgs.clojure.override { jdk = pkgs.jdk17; };
