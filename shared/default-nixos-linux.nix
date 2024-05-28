@@ -435,5 +435,6 @@ in
   };
 
   system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
   system.autoUpgrade.allowReboot = false;
 }
