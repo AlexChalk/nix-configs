@@ -2,9 +2,13 @@
 
 let
   mkForce = lib.mkForce;
+  unstable = import <nixos-unstable> {
+    config = config.nixpkgs.config;
+  };
 
-  unstable = pkgs.unstable;
-  stable = pkgs.stable;
+  stable = import <nixos-stable> {
+    config = config.nixpkgs.config;
+  };
 
   # Ultimate Hacking Keyboard rules
   # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
@@ -435,15 +439,5 @@ in
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.flags = [
-    "--update-input"
-    "stable"
-    "--update-input"
-    "unstable"
-    "--update-input"
-    "nixos-hardware"
-    "--no-write-lock-file"
-    "--print-build-logs"
-  ];
   system.autoUpgrade.allowReboot = false;
 }

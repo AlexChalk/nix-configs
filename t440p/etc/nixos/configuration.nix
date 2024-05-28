@@ -10,18 +10,6 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-
-      stable = import <nixos-stable> {
-        config = config.nixpkgs.config;
-      };
-    })
-  ];
-
   imports =
     [
       # Include the results of the hardware scan.
