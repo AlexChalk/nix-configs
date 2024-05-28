@@ -9,7 +9,11 @@
     let
       system = "x86_64-linux";
       nixpkgs = unstable-pkgs;
-      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = import ../shared/default-overlays-linux.nix;
+      };
       stable = import stable-pkgs { inherit system; config.allowUnfree = true; };
       unstable = unstable-pkgs.legacyPackages.${system};
     in
