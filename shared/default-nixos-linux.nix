@@ -435,15 +435,5 @@ in
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.flags = [
-    "--update-input"
-    "stable"
-    "--update-input"
-    "unstable"
-    "--update-input"
-    "nixos-hardware"
-    "--no-write-lock-file"
-    "--print-build-logs"
-  ];
   system.autoUpgrade.allowReboot = false;
 }
