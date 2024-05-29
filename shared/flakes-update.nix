@@ -43,12 +43,12 @@ in
           exit 1
         fi
 
-        ${pkgs.nixVersions.stable}/bin/nix flake update \
+        ${pkgs.nix}/bin/nix flake update \
           $(${lib.getBin pkgs.coreutils}/bin/dirname \
           $(${lib.getBin pkgs.coreutils}/bin/realpath /etc/nixos/flake.nix)) \
           --commit-lock-file
 
-        ${pkgs.nixVersions.stable}/bin/nix flake update \
+        ${pkgs.nix}/bin/nix flake update \
           $HOME/nix-configs/nix-profile-linux --commit-lock-file
       '';
     };
