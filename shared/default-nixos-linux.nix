@@ -315,6 +315,7 @@ in
     description = "Dropbox";
     wantedBy = [ "default.target" ];
     environment = {
+      DISPLAY = ""; # hack to hide tray icon, https://wiki.archlinux.org/title/Dropbox#Missing_tray_icon_in_wlroots_(sway,_river)
       QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
       QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
     };
