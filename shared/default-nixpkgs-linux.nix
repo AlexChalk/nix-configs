@@ -41,6 +41,7 @@ pkgs.buildEnv {
     fzf
     (hiPrio gcc)
     git
+    git-lfs
     gitAndTools.gh
     gitAndTools.hub
     gnome3.adwaita-icon-theme
