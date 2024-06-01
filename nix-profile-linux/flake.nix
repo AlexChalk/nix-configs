@@ -2,7 +2,7 @@
   description = "nixpkgs configuration";
 
   inputs = {
-    stable-pkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    stable-pkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs = { self, stable-pkgs, unstable-pkgs, ... }@all:

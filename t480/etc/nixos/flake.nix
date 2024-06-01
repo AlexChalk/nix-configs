@@ -1,7 +1,7 @@
 {
   description = "My system config";
   inputs = {
-    stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
