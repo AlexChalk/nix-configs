@@ -13,7 +13,7 @@ let
     nixpkgs-fmt
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
-    nodePackages.pyright
+    pyright
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.vscode-json-languageserver
