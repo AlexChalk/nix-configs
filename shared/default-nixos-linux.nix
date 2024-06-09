@@ -199,9 +199,9 @@ in
     suspendCapacity = 14;
   };
 
-  services.userUpdate.enable = true;
-  services.flakesUpdate.enable = false;
-  services.nixProfileUpdate.enable = false;
+  services.userUpdate.enable = false;
+  services.flakesUpdate.enable = true;
+  services.nixProfileUpdate.enable = true;
 
   # Power saving
   # https://nixos.wiki/wiki/Laptop
