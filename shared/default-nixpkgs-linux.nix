@@ -17,7 +17,6 @@ pkgs.buildEnv {
     audacity
     babashka
     bashmount
-    beets
     binutils
     bitwarden
     bitwarden-cli
@@ -37,6 +36,7 @@ pkgs.buildEnv {
     fd
     ffmpeg
     firefox-wayland
+    flac
     fsharp
     fzf
     (hiPrio gcc)
@@ -63,6 +63,7 @@ pkgs.buildEnv {
     maven
     unstable.metasploit
     mono
+    mp3val
     mpv # media player
     mtools # read ms-dos disks
     neofetch
