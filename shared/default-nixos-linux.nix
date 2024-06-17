@@ -183,7 +183,6 @@ in
     dbus-sway-environment
     configure-gtk
     vim
-    virt-manager
     wget
   ];
 
@@ -430,6 +429,8 @@ in
     onBoot = "ignore";
     onShutdown = "shutdown";
   };
+
+  virtualisation.spiceUSBRedirection.enable = true;
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.adc = {
