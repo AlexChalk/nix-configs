@@ -24,7 +24,7 @@ in
   };
   config = mkIf cfg.enable {
     systemd.user.timers.nix-profile-update = {
-      description = "nix profile install";
+      description = "nix profile upgrade";
       timerConfig.Persistent = true;
       timerConfig.OnCalendar = cfg.frequency;
       timerConfig.Unit = "nix-profile-update.service";
@@ -32,7 +32,7 @@ in
     };
 
     systemd.user.services.nix-profile-update = {
-      description = "nix profile install";
+      description = "nix profile upgrade";
       path = [ pkgs.git ];
       script = ''
         ${lib.getBin pkgs.curl}/bin/curl --head --silent --expect100-timeout 1 \
@@ -43,7 +43,7 @@ in
           exit 1
         fi
 
-        ${pkgs.nix}/bin/nix profile install $HOME/nix-configs/nix-profile-linux
+        ${pkgs.nix}/bin/nix profile upgrade adc-packages
       '';
     };
   };
