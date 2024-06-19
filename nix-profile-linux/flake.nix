@@ -19,5 +19,6 @@
     in
     {
       packages.${system}.default = (import ../shared/default-nixpkgs-linux.nix) { inherit pkgs stable unstable; };
+      adc-packages = self.packages.${system}.default;
     };
 }
