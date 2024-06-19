@@ -25,6 +25,8 @@ pkgs.buildEnv {
     circleci-cli
     clj-kondo
     clojure'
+    cmus
+    rclone
     curl
     dotnet-sdk
     dotnetPackages.Nuget
