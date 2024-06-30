@@ -290,7 +290,7 @@ in
   # Other hardware
   hardware = {
     enableAllFirmware = true;
-    opengl.enable = true;
+    graphics.enable = true;
   };
 
   hardware.sane.enable = true;
