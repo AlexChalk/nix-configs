@@ -65,7 +65,7 @@ in
       ./calendar-sync.nix
       ./user-update.nix
       ./flakes-update.nix
-      ./nix-profile-update.nix
+      ./nix-profile-upgrade.nix
       ./sane-extra-config.nix
     ];
 
@@ -200,7 +200,7 @@ in
 
   services.userUpdate.enable = false;
   services.flakesUpdate.enable = true;
-  services.nixProfileUpdate.enable = true;
+  services.nixProfileUpgrade.enable = true;
 
   # Power saving
   # https://nixos.wiki/wiki/Laptop
