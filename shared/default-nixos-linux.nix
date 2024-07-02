@@ -441,6 +441,7 @@ in
   };
 
   system.autoUpgrade.enable = true;
+  system.autoUpgrade.flake = "$(${lib.getBin pkgs.coreutils}/bin/dirname $(${lib.getBin pkgs.coreutils}/bin/realpath /etc/nixos/flake.nix))";
   system.autoUpgrade.dates = "weekly";
   system.autoUpgrade.allowReboot = false;
 }
