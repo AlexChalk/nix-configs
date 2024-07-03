@@ -87,7 +87,7 @@ pkgs.buildEnv {
     poppler_utils
     python'
     python3Packages.pipx
-    quickemu
+    stable.quickemu
     socat
     rename
     ripgrep
