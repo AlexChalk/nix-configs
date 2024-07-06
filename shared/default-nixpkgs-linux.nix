@@ -46,8 +46,8 @@ pkgs.buildEnv {
     git-lfs
     gitAndTools.gh
     gitAndTools.hub
-    gnome3.adwaita-icon-theme
-    gnome3.simple-scan
+    adwaita-icon-theme
+    simple-scan
     gnumake
     grim
     heroku
