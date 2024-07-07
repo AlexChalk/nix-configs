@@ -33,6 +33,11 @@ in
 
     systemd.user.services.nix-profile-upgrade = {
       description = "nix profile upgrade";
+      serviceConfig = {
+        Type = "oneshot";
+        Restart = "on-failure";
+        RestartSec = "1d";
+      };
       path = [ pkgs.git ];
       script = ''
         ${lib.getBin pkgs.curl}/bin/curl --head --silent --expect100-timeout 1 \
@@ -45,6 +50,8 @@ in
 
         ${pkgs.nix}/bin/nix profile upgrade adc-packages
       '';
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
     };
   };
 }
