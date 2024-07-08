@@ -357,6 +357,7 @@ in
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       glib
+      sway-audio-idle-inhibit
       swaybg
       swaylock # lockscreen
       swayidle
