@@ -67,7 +67,6 @@ in
       ./flakes-update.nix
       ./nix-profile-upgrade.nix
       ./sane-extra-config.nix
-      ./usb-wake.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -105,14 +104,6 @@ in
   };
 
   services.udev.packages = [ uhkUdevRules ];
-  services.usbWake = {
-    enable = true;
-    devices = [{
-      # UHK
-      vendor-id = "1d50";
-      product-id = "6122";
-    }];
-  };
 
   fonts.packages = with pkgs; [
     font-awesome
