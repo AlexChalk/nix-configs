@@ -105,6 +105,7 @@ in
 
   services.udev.packages = [ uhkUdevRules ];
 
+  # man 5 logind.conf
   services.logind.extraConfig = ''
     HandleLidSwitch=lock
     HandleLidSwitchExternalPower=lock
