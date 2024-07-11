@@ -105,6 +105,12 @@ in
 
   services.udev.packages = [ uhkUdevRules ];
 
+  services.logind.extraConfig = ''
+    HandleLidSwitch=lock
+    HandleLidSwitchExternalPower=lock
+    HandleLidSwitchDocked=ignore
+  '';
+
   fonts.packages = with pkgs; [
     font-awesome
   ];
