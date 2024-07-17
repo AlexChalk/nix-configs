@@ -2,6 +2,7 @@
 
 let
   runtimePackages = with pkgs; [
+    tree-sitter
     # Language servers/formatters for neovim
     clang-tools
     clojure-lsp
