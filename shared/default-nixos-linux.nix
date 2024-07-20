@@ -449,6 +449,12 @@ in
     extraGroups = [ "audio" "podman" "libvirtd" "lp" "networkmanager" "scanner" "sway" "video" "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   system.autoUpgrade.enable = true;
   system.autoUpgrade.flake = "$(${lib.getBin pkgs.coreutils}/bin/dirname $(${lib.getBin pkgs.coreutils}/bin/realpath /etc/nixos/flake.nix))";
   system.autoUpgrade.dates = "weekly";
