@@ -44,6 +44,8 @@ in
         ${pkgs.nix}/bin/nix-channel --update
         ${pkgs.nix}/bin/nix-env -iA nixos.adcPackages
       '';
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
     };
   };
 }

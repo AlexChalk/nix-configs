@@ -51,6 +51,8 @@ in
         ${pkgs.nix}/bin/nix flake update \
           $HOME/nix-configs/nix-profile-linux --commit-lock-file
       '';
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
     };
   };
 }

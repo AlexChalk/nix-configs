@@ -42,6 +42,8 @@ in
       serviceConfig = {
         Type = "oneshot";
       };
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
     };
   };
 }
