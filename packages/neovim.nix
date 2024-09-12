@@ -30,7 +30,7 @@ let
     stylua
     texlab
     # linters/diagnostics/formatters
-    nodePackages.eslint
+    eslint
     python3Packages.flake8
     python3Packages.reorder-python-imports
     black
