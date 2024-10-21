@@ -112,6 +112,7 @@ pkgs.buildEnv {
     winetricks
     wl-clipboard
     xca
+    xorg.xauth
     xorg.xkbcomp
     yarn # use yarn instead of npm for global installs
     yq-go
