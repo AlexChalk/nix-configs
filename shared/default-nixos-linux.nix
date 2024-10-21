@@ -341,7 +341,7 @@ in
     description = "Headless Zotero Instance";
     wantedBy = [ "default.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.zotero-beta}/bin/zotero --headless";
+      ExecStart = "${pkgs.zotero}/bin/zotero --headless";
     };
   };
 
@@ -396,7 +396,7 @@ in
   };
 
   systemd.user.targets.sway-session = {
-    description = "Sway compositor session";
+    description = "sway compositor session";
     documentation = [ "man:systemd.special(7)" ];
     bindsTo = [ "graphical-session.target" ];
     wants = [ "graphical-session-pre.target" ];
