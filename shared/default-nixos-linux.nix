@@ -172,7 +172,7 @@ in
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
-    alsaUtils
+    alsa-utils
     coreutils
     dbus
     dmidecode
@@ -369,7 +369,7 @@ in
       swaybg
       swaylock # lockscreen
       swayidle
-      xdg_utils # copy from screen
+      xdg-utils # copy from screen
       libappindicator-gtk3 # tray that just works
       xwayland # for legacy apps
       waybar # status bar
