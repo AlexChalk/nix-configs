@@ -43,12 +43,12 @@ in
           exit 1
         fi
 
-        ${pkgs.nix}/bin/nix flake update \
+        ${pkgs.nix}/bin/nix flake update --flake \
           $(${lib.getBin pkgs.coreutils}/bin/dirname \
           $(${lib.getBin pkgs.coreutils}/bin/realpath /etc/nixos/flake.nix)) \
           --commit-lock-file
 
-        ${pkgs.nix}/bin/nix flake update \
+        ${pkgs.nix}/bin/nix flake update --flake \
           $HOME/nix-configs/nix-profile-linux --commit-lock-file
       '';
       after = [ "network-online.target" ];

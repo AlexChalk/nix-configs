@@ -48,7 +48,7 @@ in
           exit 1
         fi
 
-        ${pkgs.nix}/bin/nix profile upgrade adc-packages
+        ${pkgs.nix}/bin/nix profile upgrade nix-profile-linux
       '';
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
