@@ -93,7 +93,7 @@ pkgs.buildEnv {
     ripgrep
     ruby
     rustup # includes rust-analyzer
-    unstable.signal-desktop-beta
+    unstable.signal-desktop
     slurp
     stack
     stylua
