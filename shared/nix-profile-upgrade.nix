@@ -40,6 +40,8 @@ in
       };
       path = [ pkgs.git ];
       script = ''
+        sleep 10
+
         ${lib.getBin pkgs.curl}/bin/curl --head --silent --expect100-timeout 1 \
           --connect-timeout 1 duckduckgo.com >/dev/null 2>&1 || retping=$?
 
