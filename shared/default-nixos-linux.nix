@@ -455,9 +455,11 @@ in
     options = "--delete-older-than 14d";
   };
 
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.persistent = true;
-  system.autoUpgrade.flake = "$(${lib.getBin pkgs.coreutils}/bin/dirname $(${lib.getBin pkgs.coreutils}/bin/realpath /etc/nixos/flake.nix))";
-  system.autoUpgrade.dates = "weekly";
-  system.autoUpgrade.allowReboot = false;
+  system.autoUpgrade = {
+    enable = true;
+    persistent = true;
+    flake = "$(${lib.getBin pkgs.coreutils}/bin/dirname $(${lib.getBin pkgs.coreutils}/bin/realpath /etc/nixos/flake.nix))";
+    dates = "weekly";
+    allowReboot = false;
+  };
 }
