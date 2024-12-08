@@ -50,7 +50,7 @@ pkgs.buildEnv {
     simple-scan
     gnumake
     grim
-    heroku
+    unstable.heroku
     hledger
     htop
     imagemagick
