@@ -21,7 +21,7 @@ pkgs.buildEnv {
     bitwarden
     bitwarden-cli
     bundix
-    castget # rss enclosure downloader
+    # castget # rss enclosure downloader
     circleci-cli
     clj-kondo
     clojure'
