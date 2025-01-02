@@ -82,6 +82,7 @@ pkgs.buildEnv {
     pandoc
     papis
     parted
+    pdfarranger
     poetry
     pomodoro
     poppler_utils
