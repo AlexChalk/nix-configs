@@ -104,6 +104,7 @@ pkgs.buildEnv {
     tree
     stable.uhk-agent
     universal-ctags
+    unrar
     unzip
     viewnior
     wf-recorder
