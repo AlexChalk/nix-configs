@@ -8,6 +8,7 @@ let
 
   # Ultimate Hacking Keyboard rules
   # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
+  # https://github.com/UltimateHackingKeyboard/agent/blob/master/rules/50-uhk60.rules
   uhkUdevRules = pkgs.writeTextFile {
     name = "uhk-dev-rules";
     text = ''
