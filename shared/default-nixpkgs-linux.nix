@@ -118,7 +118,7 @@ pkgs.buildEnv {
     yq-go
     zathura
     zoom-us
-    zotero
+    stable.zotero
     zstd # compression algorithm
     # Neovim
     (callPackage (import ../packages/neovim.nix) { })

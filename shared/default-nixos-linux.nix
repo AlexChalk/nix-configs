@@ -343,7 +343,7 @@ in
     description = "Headless Zotero Instance";
     wantedBy = [ "default.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.zotero}/bin/zotero --headless";
+      ExecStart = "${stable.zotero}/bin/zotero --headless";
     };
   };
 
