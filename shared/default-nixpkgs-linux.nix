@@ -108,8 +108,8 @@ pkgs.buildEnv {
     viewnior
     wf-recorder
     wget
-    wineWowPackages.waylandFull
-    winetricks
+    stable.wineWowPackages.waylandFull
+    stable.winetricks
     wl-clipboard
     xca
     xorg.xauth
