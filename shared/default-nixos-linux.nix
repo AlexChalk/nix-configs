@@ -6,23 +6,6 @@ let
   unstable = pkgs.unstable;
   stable = pkgs.stable;
 
-  # Ultimate Hacking Keyboard rules
-  # These are the udev rules for accessing the USB interfaces of the UHK as non-root users.
-  # https://github.com/UltimateHackingKeyboard/agent/blob/master/rules/50-uhk60.rules
-  uhkUdevRules = pkgs.writeTextFile {
-    name = "uhk-dev-rules";
-    text = ''
-      SUBSYSTEM=="input", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", GROUP="input", MODE="0660"
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", TAG+="uaccess"
-      KERNEL=="hidraw*", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="612[0-7]", TAG+="uaccess"
-
-      SUBSYSTEM=="input", ATTRS{idVendor}=="37a8", ATTRS{idProduct}=="*", GROUP="input", MODE="0660"
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="37a8", ATTRS{idProduct}=="*", TAG+="uaccess"
-      KERNEL=="hidraw*", ATTRS{idVendor}=="37a8", ATTRS{idProduct}=="*", TAG+="uaccess"
-    '';
-    destination = "/etc/udev/rules.d/50-uhk60.rules";
-  };
-
   # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
   # see
@@ -107,8 +90,6 @@ in
     allowedTCPPorts = [ 3000 17500 ];
     allowedUDPPorts = [ 17500 ];
   };
-
-  services.udev.packages = [ uhkUdevRules ];
 
   # man 5 logind.conf
   # services.logind.extraConfig = ''
@@ -292,6 +273,8 @@ in
     enable = true;
     port = 6379;
   };
+
+  hardware.keyboard.uhk.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
