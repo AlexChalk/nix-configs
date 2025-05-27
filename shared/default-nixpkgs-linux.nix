@@ -111,6 +111,7 @@ pkgs.buildEnv {
     # wineWowPackages.waylandFull
     wineWowPackages.full
     winetricks
+    unrar
     wl-clipboard
     xca
     xorg.xauth
