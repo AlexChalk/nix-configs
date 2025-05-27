@@ -137,7 +137,7 @@ in
   services.gnome = {
     gnome-keyring.enable = true;
     core-os-services.enable = mkForce false;
-    core-utilities.enable = mkForce false;
+    core-apps.enable = mkForce false;
     games.enable = mkForce false;
     core-shell.enable = true;
   };
