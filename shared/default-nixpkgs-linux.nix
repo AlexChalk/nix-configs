@@ -87,7 +87,7 @@ pkgs.buildEnv {
     poppler_utils
     python'
     python3Packages.pipx
-    stable.quickemu
+    quickemu
     socat
     rename
     ripgrep
@@ -102,7 +102,7 @@ pkgs.buildEnv {
     terraform
     tmux
     tree
-    stable.uhk-agent
+    uhk-agent
     universal-ctags
     unzip
     viewnior
@@ -120,7 +120,7 @@ pkgs.buildEnv {
     yq-go
     zathura
     zoom-us
-    stable.zotero
+    zotero
     zstd # compression algorithm
     # Neovim
     (callPackage (import ../packages/neovim.nix) { })
