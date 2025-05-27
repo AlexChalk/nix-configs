@@ -15,7 +15,7 @@ in
         '';
       };
       frequency = mkOption {
-        default = "daily";
+        default = "Sat 01:00:00";
         description = ''
           How often to update flakes.
         '';
