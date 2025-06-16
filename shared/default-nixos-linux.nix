@@ -149,6 +149,7 @@ in
 
   # Set your time zone.
   time.timeZone = "America/Montreal";
+  # time.timeZone = "Europe/London";
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -273,6 +274,8 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
+
+  # hardware.xpadneo.enable = true;
 
   # Other hardware
   hardware = {
