@@ -44,7 +44,7 @@ let
   extraMakeWrapperArgs = ''--suffix PATH : "${pkgs.lib.makeBinPath runtimePackages}"'';
 
   # See https://github.com/NixOS/nixpkgs/blob/d211b80d2944a41899a6ab24009d9729cca05e49/pkgs/applications/editors/neovim/utils.nix#L127-L165
-  config = pkgs.neovimUtils.makeNeovimConfig {
+  config = pkgs.neovimUtils.makeNeovimConfig {} // {
     extraPython3Packages = ps: with ps; [ debugpy pyyaml ];
 
     plugins = with pkgs.vimPlugins; [ fzf-vim fzfWrapper ];
